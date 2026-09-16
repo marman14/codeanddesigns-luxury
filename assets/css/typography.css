@@ -1,0 +1,84 @@
+/* ==========================================================================
+   STRICT LUXURY EDITORIAL SERIF TYPOGRAPHY
+   Referencing attached user image: "Your settlement is in safe hands."
+   High-contrast, elegant condensed/semi-condensed editorial serif.
+   RULE: 100% of website (headings, body, buttons, subtext, badges, inputs)
+   MUST use this exact serif font family. NO sans-serif fonts allowed.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+:root {
+  --font-serif-primary: 'Instrument Serif', 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-editorial: 'Instrument Serif', 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-body: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
+}
+
+/* Universal Strict Serif Enforcement across all elements, pseudo-elements, forms, buttons */
+*,
+*::before,
+*::after,
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, a, strong, em, b, i, small,
+button, input, textarea, select, label, option,
+ul, ol, li,
+nav, header, footer, section, div,
+table, th, td,
+blockquote, cite, code, pre,
+.tp-hero-title,
+.tp-section-title,
+.tp-section-subtitle,
+.tp-nav-menu,
+.tp-btn,
+.tp-btn-black,
+.tp-btn-black-text,
+.tp-el-title,
+.tp-el-desc,
+.tp-el-content,
+.tp-el-meta,
+.tp-el-btn,
+.elementor-button,
+.elementor-field,
+.crp-price-title,
+.crp-price-item {
+  font-family: var(--font-serif-primary) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Specific editorial serif styling refinements for exquisite hierarchy */
+body {
+  font-family: var(--font-serif-body) !important;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.section-title {
+  font-family: var(--font-serif-editorial) !important;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.text-editorial-accent {
+  color: #b4532a; /* Warm editorial cognac/burnt amber accent matching the reference image "safe hands." */
+  font-style: italic;
+}
+
+button,
+.btn,
+.tp-btn-black,
+.tp-btn-black-text,
+.badge,
+.nav-link,
+.tp-service-number,
+.tp-work-number,
+.counter-number {
+  font-family: var(--font-serif-primary) !important;
+  letter-spacing: 0.04em;
+}

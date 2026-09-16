@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Code &amp; Designs — Elite Web &amp; App Development Agency</title>
+  <meta name="description" content="Code & Designs is an elite digital agency creating fast, scalable websites, custom web apps, mobile apps, AI chatbots, and business automation." />
+  
+  <!-- Strict Luxury Editorial Typography & Master Stylesheets -->
+  <link rel="stylesheet" href="assets/css/typography.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <!-- Three.js for 3D WebGL Scene -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- ==================== HEADER (CLEAN LIGHT THEME) ==================== -->
+  <header class="tp-header-area">
+    <div class="container-1750">
+      <div class="tp-header-inner">
+        <!-- Brand Logo -->
+        <div class="tp-header-logo">
+          <a href="index.html">
+            <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="8" fill="#be8c33"/>
+              <path d="M12 28L20 12L28 28" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 22H25" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Code &amp; Designs</span>
+          </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="d-none d-xl-block">
+          <ul class="tp-nav-menu">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="has-dropdown">
+              <a href="services.html">Services</a>
+              <ul class="tp-submenu">
+                <li><a href="services.html#web-design">Web Design for Small Businesses</a></li>
+                <li><a href="services.html">All Services</a></li>
+              </ul>
+            </li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Right & CTA -->
+        <div class="tp-header-right">
+          <div class="tp-header-lang">
+            <a href="#" class="active">EN</a>
+            <a href="#">FR</a>
+          </div>
+
+          <div class="tp-header-btn-box">
+            <a href="contact.html" class="tp-btn-gold">
+              <span>Start a Project</span>
+              <span class="tp-btn-circle">→</span>
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="tp-offcanvas-open-btn" aria-label="Toggle Navigation">
+            <i></i>
+            <i></i>
+            <i></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== OFFCANVAS DRAWER ==================== -->
+  <div class="tp-offcanvas-area">
+    <div class="tp-offcanvas-top">
+      <div class="tp-header-logo">
+        <a href="index.html">
+          <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#be8c33"/>
+            <path d="M12 28L20 12L28 28" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Code &amp; Designs</span>
+        </a>
+      </div>
+      <button class="tp-offcanvas-close-btn" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="tp-offcanvas-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="tp-offcanvas-contact">
+      <h4>Information</h4>
+      <a href="tel:+18559646085">+1 (855) 964-6085</a>
+      <a href="mailto:info@codeanddesigns.com">info@codeanddesigns.com</a>
+      <p style="margin-top: 15px; color: var(--text-muted);">5016 Foxen Ct, Cheyenne, WY 82001, USA</p>
+    </div>
+  </div>
+  <div class="body-overlay"></div>
+
+  <!-- ==================== HERO SECTION (CLEAN LIGHT THEME WITH 3D WEBGL) ==================== -->
+  <section class="tp-hero-area">
+    <!-- 3D Three.js Interactive Background Mesh in Metallic Gold & Navy -->
+    <canvas id="hero-webgl-canvas"></canvas>
+
+    <div class="container-1750 hero-content-layer">
+      <div style="display: grid; grid-template-columns: 2.2fr 1fr; gap: 40px; align-items: flex-end;">
+        
+        <!-- Left: Hero Giant Title -->
+        <div class="tp-hero-title-box">
+          <h1 class="tp-hero-title">
+            <span>Build.</span> <br>
+            <span>
+              <span class="tp-hero-video-pill">
+                <video autoplay loop muted playsinline>
+                  <source src="https://html.aqlova.com/videos/liko/liko.mp4" type="video/mp4">
+                </video>
+              </span>Launch.
+            </span> <br>
+            <span class="accent-italic">Scale.</span>
+          </h1>
+        </div>
+
+        <!-- Right: Callout & Testimonial Pill -->
+        <div class="tp-hero-right-col">
+          <div class="tp-hero-info">
+            <p>
+              Hey! <br>
+              Ready to grow online? <br>
+              Start your project with us today.
+            </p>
+            <a href="contact.html" class="tp-hero-arrow-btn" aria-label="Contact us">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 21L21 1M21 1H1M21 1V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="tp-hero-more-info">
+            <div class="tp-hero-avater">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" alt="Juan Mauel" />
+              <span>Juan Mauel</span>
+            </div>
+            <p>“The depth of exploration and quality of the work was great”</p>
+            <div style="text-align: right;">
+              <a href="about.html" class="about-link">About Us →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CALL BACK BANNER (EXACT REPLICA OF REFERENCE IMAGE 2) ==================== -->
+  <div class="call-back-banner">
+    <div class="container-1510">
+      <div class="call-back-inner">
+        <h2 class="call-back-title">Request A Call Back</h2>
+        <a href="contact.html" class="call-back-btn">Click Here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WHO WE ARE SECTION (SOFT LIGHT BACKGROUND) ==================== -->
+  <section class="tp-about-section">
+    <div class="container-1510">
+      <div class="tp-section-subtitle">WHO WE ARE</div>
+      <h2 class="tp-section-title-large">
+        We help businesses stand out with smart design and powerful development. <br>
+        At Code &amp; Designs, every project is crafted to drive engagement and growth. <br>
+        <span style="color: var(--accent-gold); font-style: italic;">Your vision, our expertise, delivered with precision.</span>
+      </h2>
+
+      <div class="tp-about-grid">
+        <div class="tp-about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80" alt="Code and Designs Agency Workspace" />
+        </div>
+
+        <div class="tp-about-desc-box">
+          <p>
+            Where strategy, design, and technology come together. We build reliable, scalable digital products tailored to your business goals. Focused on quality, performance, and long-term success.
+          </p>
+
+          <div class="tp-counters-wrap">
+            <div class="tp-counter-item">
+              <div class="number"><span class="purecounter" data-target="98">0</span>%</div>
+              <p>Clients Satisfied and Repeating</p>
+            </div>
+            <div class="tp-counter-item">
+              <div class="number"><span class="purecounter" data-target="120">0</span>+</div>
+              <p>Projects Completed in 24 Countries</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INFINITE MARQUEE TICKER (METALLIC GOLD) ==================== -->
+  <div class="tp-text-slide-area">
+    <div class="marquee-track">
+      <div class="marquee-item">UI Design</div>
+      <div class="marquee-item">Digital Agency</div>
+      <div class="marquee-item">Strategy</div>
+      <div class="marquee-item">Digital Solution</div>
+      <div class="marquee-item">Business Growth</div>
+      <div class="marquee-item">Development</div>
+      <div class="marquee-item">IT Company</div>
+      <div class="marquee-item">SEO Agency</div>
+      <div class="marquee-item">Consulting</div>
+      <div class="marquee-item">Branding</div>
+      <div class="marquee-item">Lifetime Update</div>
+      <!-- Duplicated for smooth loop -->
+      <div class="marquee-item">UI Design</div>
+      <div class="marquee-item">Digital Agency</div>
+      <div class="marquee-item">Strategy</div>
+      <div class="marquee-item">Digital Solution</div>
+      <div class="marquee-item">Business Growth</div>
+      <div class="marquee-item">Development</div>
+      <div class="marquee-item">IT Company</div>
+      <div class="marquee-item">SEO Agency</div>
+      <div class="marquee-item">Consulting</div>
+      <div class="marquee-item">Branding</div>
+      <div class="marquee-item">Lifetime Update</div>
+    </div>
+  </div>
+
+  <!-- ==================== PINNED SERVICES (EXACT REFERENCE GOLD CARD DESIGN) ==================== -->
+  <section class="tp-service-area" id="services">
+    <div class="container-1510">
+      <div class="tp-service-header">
+        <div class="tp-section-subtitle">Services</div>
+        <h2 class="tp-section-title-large">Crafting high-impact digital solutions</h2>
+      </div>
+
+      <div class="tp-service-pin-container">
+        
+        <!-- Card 01: LMS & Custom Web Development (Matching Image 1 Exact Spec) -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>LMS Custom Development</h3>
+              <p class="card-subtitle-line">When LearnDash/LifterLMS Can't Handle Your Business Logic:</p>
+              <ul class="card-bullet-list">
+                <li>Student tracking &amp; certification</li>
+                <li>Advanced quiz &amp; assessment logic</li>
+                <li>Webinar platform integrations</li>
+                <li>Custom permissions &amp; user management</li>
+                <li>Progress tracking &amp; gamification</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>LearnDash</span>
+                <span>WordPress LMS</span>
+                <span>Custom Next.js</span>
+                <span>SCORM API</span>
+                <span>WooCommerce</span>
+              </div>
+              <a href="pricing.html" class="card-action-btn-white">
+                <span>See More — Pricing</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80" alt="LMS & Web Development" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 02: Mobile & Web App Development -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>App Development</h3>
+              <p class="card-subtitle-line">Turn your ambitious product concepts into high-impact native apps:</p>
+              <ul class="card-bullet-list">
+                <li>Native iOS (Swift) &amp; Android (Kotlin)</li>
+                <li>Cross-platform Flutter &amp; React Native</li>
+                <li>Offline-first real-time cloud synchronisation</li>
+                <li>Scalable REST &amp; GraphQL backend systems</li>
+                <li>App Store &amp; Google Play automated deployment</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>iOS</span>
+                <span>Android</span>
+                <span>Flutter</span>
+                <span>Backend API</span>
+                <span>Cloud Functions</span>
+              </div>
+              <a href="pricing.html" class="card-action-btn-white">
+                <span>See More — Pricing</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop&q=80" alt="App Development" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 03: AI Chatbots & WhatsApp Automation -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>AI Chatbots &amp; Automation</h3>
+              <p class="card-subtitle-line">Autonomous AI assistants that capture leads &amp; resolve tickets 24/7:</p>
+              <ul class="card-bullet-list">
+                <li>Custom-trained OpenAI &amp; Gemini agent models</li>
+                <li>Direct WhatsApp Cloud API integrations</li>
+                <li>CRM lead enrichment &amp; automated calendar booking</li>
+                <li>Multi-lingual customer support workflows</li>
+                <li>Seamless human agent escalation handoffs</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>OpenAI</span>
+                <span>WhatsApp API</span>
+                <span>LangChain</span>
+                <span>Vector Embeddings</span>
+              </div>
+              <a href="contact.html" class="card-action-btn-white">
+                <span>Learn More</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80" alt="AI Chatbots" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 04: Business Automation & Systems Integration -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>Business Automation</h3>
+              <p class="card-subtitle-line">Eliminate manual bottlenecks and scale operations friction-free:</p>
+              <ul class="card-bullet-list">
+                <li>Automated billing, invoicing &amp; receipt logic</li>
+                <li>HubSpot, Salesforce &amp; Zoho pipeline automations</li>
+                <li>Custom webhooks &amp; multi-app data sync via Make/Zapier</li>
+                <li>Automated employee and client onboarding funnels</li>
+                <li>Real-time financial and operational dashboards</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>Make.com</span>
+                <span>Zapier</span>
+                <span>Webhooks</span>
+                <span>CRM Integrations</span>
+              </div>
+              <a href="contact.html" class="card-action-btn-white">
+                <span>Learn More</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80" alt="Business Automation" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 05: Brand Identity & Graphic Design -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>Graphic Designing &amp; Branding</h3>
+              <p class="card-subtitle-line">Distinguish your business with memorable, high-fashion visuals:</p>
+              <ul class="card-bullet-list">
+                <li>Luxury brand books, typography &amp; color guidelines</li>
+                <li>Vector logo systems &amp; bespoke iconography</li>
+                <li>High-converting marketing collateral &amp; pitch decks</li>
+                <li>Packaging &amp; physical product 3D rendering</li>
+                <li>Digital social media design suites</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>Brand Identity</span>
+                <span>Figma Systems</span>
+                <span>Vector Design</span>
+                <span>3D Mockups</span>
+              </div>
+              <a href="contact.html" class="card-action-btn-white">
+                <span>Learn More</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=80" alt="Graphic Design" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 06: Conversion SEO & Digital Marketing -->
+        <div class="tp-service-item">
+          <div class="tp-service-grid">
+            <div class="reference-card-icon">
+              <div class="inner-square"></div>
+            </div>
+            <div class="tp-service-content">
+              <h3>Digital Marketing &amp; SEO</h3>
+              <p class="card-subtitle-line">Drive sustained, compounding customer acquisition:</p>
+              <ul class="card-bullet-list">
+                <li>Technical SEO audits &amp; Core Web Vitals acceleration</li>
+                <li>High-intent keyword research &amp; programmatic content</li>
+                <li>Data-driven Google &amp; Meta paid ad campaigns</li>
+                <li>Full-funnel conversion rate optimization (CRO)</li>
+                <li>Detailed ROI analytics &amp; performance reporting</li>
+              </ul>
+              <div class="tp-service-tags">
+                <span>Technical SEO</span>
+                <span>Performance Ads</span>
+                <span>Google Search Console</span>
+                <span>CRO</span>
+              </div>
+              <a href="contact.html" class="card-action-btn-white">
+                <span>Learn More</span>
+                <span>→</span>
+              </a>
+            </div>
+            <div class="tp-service-thumb">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Digital Marketing" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VIDEO SHOWCASE GRID (DEEP NAVY) ==================== -->
+  <section class="tp-video-area">
+    <div class="container-1750">
+      <div class="tp-video-grid">
+        <div class="tp-video-thumb">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80" alt="Agency Scene 1" />
+        </div>
+        <div class="tp-video-thumb center-video">
+          <video loop muted autoplay playsinline>
+            <source src="https://html.aqlova.com/videos/liko/liko.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="tp-video-thumb">
+          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=80" alt="Agency Scene 2" />
+        </div>
+        <div class="tp-video-thumb">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80" alt="Agency Scene 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PROJECTS SECTION ==================== -->
+  <section class="tp-project-section" id="work">
+    <div class="container-1510">
+      <div class="tp-service-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div class="tp-section-subtitle">Featured Projects</div>
+          <h2 class="tp-section-title-large">Selected Works &amp; Case Studies</h2>
+        </div>
+        <a href="contact.html" class="tp-btn-gold">
+          <span>All Projects</span>
+          <span class="tp-btn-circle">→</span>
+        </a>
+      </div>
+
+      <div class="tp-project-grid">
+        
+        <!-- Project 1 -->
+        <div class="tp-project-item" data-cursor="View Demo">
+          <div class="tp-project-thumb">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&q=80" alt="NEXERA" />
+          </div>
+          <div class="tp-project-content">
+            <h4 class="tp-project-title">NEXERA</h4>
+            <div class="tp-project-category">
+              <span>Development</span> • <span>Graphics</span> • <span>SEO</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="tp-project-item" data-cursor="View Demo">
+          <div class="tp-project-thumb">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=900&auto=format&fit=crop&q=80" alt="Product Mockup" />
+          </div>
+          <div class="tp-project-content">
+            <h4 class="tp-project-title">Product Mockup</h4>
+            <div class="tp-project-category">
+              <span>Creative</span> • <span>Branding</span> • <span>Development</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="tp-project-item" data-cursor="View Demo">
+          <div class="tp-project-thumb">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&auto=format&fit=crop&q=80" alt="AI-Whatsapp Automation" />
+          </div>
+          <div class="tp-project-content">
+            <h4 class="tp-project-title">AI-Whatsapp Automation</h4>
+            <div class="tp-project-category">
+              <span>AI Automation</span> • <span>WhatsApp API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="tp-project-item" data-cursor="View Demo">
+          <div class="tp-project-thumb">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&auto=format&fit=crop&q=80" alt="Health Web App" />
+          </div>
+          <div class="tp-project-content">
+            <h4 class="tp-project-title">Health Web App</h4>
+            <div class="tp-project-category">
+              <span>Web App</span> • <span>Automation</span> • <span>Framing</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW WE WORK (DESIGN THINKING PROCESS) ==================== -->
+  <section class="tp-process-section">
+    <div class="container-1510">
+      <div class="tp-process-grid">
+        <div class="tp-process-sticky-left">
+          <div class="tp-section-subtitle">How we Work</div>
+          <h2>Our design <br>thinking process</h2>
+          <p style="margin-top: 24px; font-size: 1.3rem; color: var(--text-body); line-height: 1.6;">
+            A rigorous, user-centered framework engineered to transform complex business challenges into sleek, high-performing digital systems.
+          </p>
+        </div>
+
+        <div class="tp-process-list">
+          <!-- Step 01 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">01</div>
+            <div class="tp-process-card-content">
+              <h3>User Research &amp; Discovery</h3>
+              <p>We start by understanding your business, users, and market. Through research and analysis, we identify user needs, pain points, and growth opportunities.</p>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">02</div>
+            <div class="tp-process-card-content">
+              <h3>Problem Definition &amp; Strategy</h3>
+              <p>We clearly define the core challenges and project goals. This step helps us create a focused digital strategy aligned with your business objectives.</p>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">03</div>
+            <div class="tp-process-card-content">
+              <h3>Design &amp; Prototyping</h3>
+              <p>Our team creates intuitive UI/UX designs and interactive prototypes. This ensures a smooth user experience before development begins.</p>
+            </div>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">04</div>
+            <div class="tp-process-card-content">
+              <h3>Development &amp; Integration</h3>
+              <p>We develop high-performance websites, applications, and AI solutions using modern technologies. All systems are built for speed, security, and scalability.</p>
+            </div>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">05</div>
+            <div class="tp-process-card-content">
+              <h3>Testing &amp; Optimization</h3>
+              <p>Every project goes through rigorous testing for functionality, performance, and SEO. We optimize for speed, usability, and cross-device compatibility.</p>
+            </div>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="tp-process-card">
+            <div class="tp-process-number">06</div>
+            <div class="tp-process-card-content">
+              <h3>Launch &amp; Deployment</h3>
+              <p>Once approved, we launch your product with a smooth and secure deployment process. We ensure everything works perfectly from day one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CLIENT REVIEWS & TESTIMONIALS ==================== -->
+  <section class="tp-testimonial-section">
+    <div class="container-1510">
+      <div class="tp-testimonial-header">
+        <div class="tp-section-subtitle">Client Reviews</div>
+        <h2 class="tp-section-title-large">Trusted by founders worldwide</h2>
+        <div class="tp-clutch-badge">
+          <span style="font-size: 1.15rem; font-weight: 600; color: var(--text-navy);">4.9/5</span>
+          <span class="stars">★★★★★</span>
+          <span style="color: var(--text-muted);">Based on 24 reviews on Clutch</span>
+        </div>
+      </div>
+
+      <div class="tp-testimonial-slider">
+        <!-- Review 1 -->
+        <div class="tp-testimonial-card">
+          <p>“Code &amp; Designs delivered an outstanding ecommerce website that exceeded our expectations. The site is fast, user-friendly, and already improving our online sales.”</p>
+          <div class="tp-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="James Carter" />
+            <div>
+              <h4>James Carter</h4>
+              <span>Founder, EcomGrow Solutions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="tp-testimonial-card">
+          <p>“Their web development and SEO services helped us significantly increase our website traffic. Professional team, clear communication, and excellent results.”</p>
+          <div class="tp-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80" alt="Sarah Mitchell" />
+            <div>
+              <h4>Sarah Mitchell</h4>
+              <span>Marketing Manager, BrightEdge Marketing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="tp-testimonial-card">
+          <p>“We worked with Code &amp; Designs on a custom web application, and the experience was smooth from start to finish. Highly recommended for serious businesses.”</p>
+          <div class="tp-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="Daniel Roberts" />
+            <div>
+              <h4>Daniel Roberts</h4>
+              <span>CEO, TechNova Solutions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RECENT PROJECTS (HOVER REVEAL PREVIEW LIST) ==================== -->
+  <section class="tp-awards-section">
+    <div class="container-1510">
+      <div class="tp-section-subtitle">Recent Projects</div>
+      <h2 class="tp-section-title-large" style="margin-bottom: 40px;">Deliveries across 24 countries</h2>
+
+      <div class="tp-award-list">
+        <!-- Item 1 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">Travel</span>
+            <span class="tp-award-name">nexera</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">immigrationnx.com</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">CPA</span>
+            <span class="tp-award-name">vivek sethi cpa</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">viveksethicpa.ca</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">Medical</span>
+            <span class="tp-award-name">Alfalah labs</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">alfalahlabs.com</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">Barber</span>
+            <span class="tp-award-name">Best Cut</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">bestcutbarbershop.com</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">Logistics</span>
+            <span class="tp-award-name">TADD Global</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">taddglobalresources.com</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="tp-award-item" data-preview-img="https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&auto=format&fit=crop&q=80">
+          <div class="tp-award-left">
+            <span class="tp-award-category">Pet Store</span>
+            <span class="tp-award-name">Pet Hub</span>
+          </div>
+          <div class="tp-award-right">
+            <span class="tp-award-domain">pethub.pe</span>
+            <span class="tp-award-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Hover Reveal Image Container -->
+  <div class="hover-reveal-preview">
+    <img src="" alt="Project Preview" />
+  </div>
+
+  <!-- ==================== REQUEST A CALL BACK BANNER (REFERENCE IMAGE 2) ==================== -->
+  <div class="tp-call-back-banner">
+    <div class="container-1750">
+      <div class="call-back-inner">
+        <h2 class="call-back-title">Request A Call Back</h2>
+        <a href="contact.html" class="call-back-btn">CLICK HERE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER (DEEP NAVY #011b39) ==================== -->
+  <footer class="tp-footer-area">
+    <div class="container-1750">
+      <div class="tp-footer-grid">
+        <!-- Col 1: Brand & Social -->
+        <div class="tp-footer-brand">
+          <h3>Helping <br> start-ups scale &amp; grow.</h3>
+          <div class="tp-footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="LinkedIn">IN</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="https://wa.me/18559646085" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="tp-footer-col">
+          <h4>Quick links</h4>
+          <ul class="tp-footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Info -->
+        <div class="tp-footer-col">
+          <h4>Contact</h4>
+          <ul class="tp-footer-links">
+            <li><a href="mailto:info@codeanddesigns.com">info@codeanddesigns.com</a></li>
+            <li><a href="tel:+18559646085">+1 (855) 964-6085</a></li>
+            <li style="color: rgba(255, 255, 255, 0.6); margin-top: 10px;">5016 Foxen Ct, Cheyenne, WY 82001, USA</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Watermark Giant Typography -->
+      <div class="tp-footer-watermark">Code&amp;Designs</div>
+
+      <!-- Footer Bottom -->
+      <div class="tp-footer-bottom">
+        <div>&copy; 2025 Codeanddesign.com — All rights reserved.</div>
+        <div class="tp-footer-bottom-links">
+          <a href="#">Terms and Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/18559646085" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <div class="floating-whatsapp-badge">Need Help?</div>
+    <div class="floating-whatsapp-bubble">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382C17.072 14.182 15.112 13.222 14.747 13.088C14.382 12.955 14.116 12.888 13.85 13.288C13.584 13.688 12.818 14.588 12.584 14.855C12.35 15.122 12.116 15.155 11.716 14.955C11.316 14.755 10.029 14.334 8.502 12.973C7.313 11.913 6.51 10.605 6.276 10.205C6.042 9.805 6.251 9.589 6.452 9.389C6.633 9.208 6.855 8.918 7.055 8.685C7.255 8.452 7.322 8.285 7.455 8.018C7.588 7.752 7.522 7.518 7.422 7.318C7.322 7.118 6.522 5.152 6.189 4.352C5.864 3.573 5.534 3.678 5.289 3.666C5.056 3.655 4.789 3.655 4.522 3.655C4.256 3.655 3.822 3.755 3.456 4.155C3.089 4.555 2.056 5.522 2.056 7.488C2.056 9.455 3.489 11.355 3.689 11.622C3.889 11.888 6.502 15.918 10.51 17.651C11.463 18.063 12.208 18.309 12.789 18.493C13.748 18.797 14.62 18.754 15.31 18.651C16.08 18.536 17.68 17.682 18.013 16.748C18.347 15.815 18.347 15.015 18.247 14.848C18.147 14.682 17.881 14.582 17.481 14.382H17.472Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12C2 13.818 2.484 15.524 3.328 16.994L2.05 21.75L6.924 20.493C8.428 21.442 10.166 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 20.155C10.371 20.155 8.878 19.664 7.636 18.823L7.339 18.623L4.453 19.362L5.223 16.545L5.003 16.202C4.084 14.773 3.593 13.12 3.593 11.412C3.593 6.776 7.364 3.005 12 3.005C16.636 3.005 20.407 6.776 20.407 11.412C20.407 16.048 16.636 20.155 12 20.155Z" fill="white"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- Core Scripts -->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
