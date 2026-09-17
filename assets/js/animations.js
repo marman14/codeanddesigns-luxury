@@ -41,118 +41,187 @@ export function initScrollAnimations() {
   if (hasGSAP && hasScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
 
-    // A. Hero Section Master Entrance Timeline
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    // Strict element deduplication tracker — guarantees NO DOM element is ever animated twice
+    const processedElements = new WeakSet();
 
-    if (document.querySelector('.tp-hero-badge')) {
-      heroTl.from('.tp-hero-badge', { y: -20, opacity: 0, duration: 0.7, delay: 0.1 });
-    }
+    const markProcessed = (el) => {
+      if (!el) return;
+      processedElements.add(el);
+      el.setAttribute('data-lux-animated', 'true');
+    };
 
-    if (document.querySelector('.tp-hero-title')) {
-      heroTl.from('.tp-hero-title', { y: 40, opacity: 0, duration: 0.95, ease: 'power4.out' }, '-=0.4');
-    }
+    // Helper: Safe fromTo entrance animation with automatic above-fold vs scroll detection
+    const animateEntrance = (el, options = {}) => {
+      if (!el || processedElements.has(el)) return;
+      markProcessed(el);
 
-    if (document.querySelector('.ar-hero-col-left p')) {
-      heroTl.from('.ar-hero-col-left p', { y: 30, opacity: 0, duration: 0.8 }, '-=0.5');
-    }
+      const yOffset = options.y !== undefined ? options.y : 30;
+      const duration = options.duration || 0.8;
+      const delay = options.delay || 0;
+      const ease = options.ease || 'power3.out';
+      const rect = el.getBoundingClientRect();
+      const isAboveFold = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
 
-    if (document.querySelector('.tp-hero-buttons')) {
-      heroTl.from('.tp-hero-buttons', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5');
-    }
-
-    if (document.querySelector('.ar-hero-floating-card')) {
-      heroTl.from('.ar-hero-floating-card', { y: 35, opacity: 0, duration: 0.9 }, '-=0.7');
-    }
-
-    // B. Global Section Header ScrollTriggers
-    const sectionHeaders = document.querySelectorAll('.tp-section-subtitle, .tp-section-title, .tp-section-title-large, .tp-section-title-wrapper');
-    sectionHeaders.forEach((headerEl) => {
-      gsap.from(headerEl, {
-        scrollTrigger: {
-          trigger: headerEl,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
-        },
-        y: 35,
-        opacity: 0,
-        duration: 0.85,
-        ease: 'power3.out'
-      });
-    });
-
-    // C. Service Cards Staggered Reveal
-    const serviceItems = document.querySelectorAll('.tp-service-item');
-    serviceItems.forEach((item, idx) => {
-      gsap.from(item, {
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        y: 45,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out'
-      });
-    });
-
-    // D. Testimonials Grid Staggered Reveal
-    const testimonialGrids = document.querySelectorAll('.tp-testimonial-grid-8, .tp-testimonial-grid');
-    testimonialGrids.forEach((grid) => {
-      const cards = grid.querySelectorAll('.tp-testimonial-card');
-      if (cards.length) {
-        gsap.from(cards, {
-          scrollTrigger: {
-            trigger: grid,
-            start: 'top 82%',
-            toggleActions: 'play none none none'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.85,
-          stagger: 0.12,
-          ease: 'power3.out'
-        });
+      if (isAboveFold) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: yOffset },
+          {
+            opacity: 1,
+            y: 0,
+            duration: duration,
+            delay: delay,
+            ease: ease,
+            clearProps: 'all'
+          }
+        );
+      } else {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: yOffset },
+          {
+            opacity: 1,
+            y: 0,
+            duration: duration,
+            delay: delay,
+            ease: ease,
+            clearProps: 'all',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              once: true
+            }
+          }
+        );
       }
-    });
+    };
 
-    // E. Team Cards Reveal (About Us Page)
-    const teamCards = document.querySelectorAll('.tp-about-section .tp-testimonial-card, .tp-about-grid');
-    if (teamCards.length) {
-      gsap.from(teamCards, {
-        scrollTrigger: {
-          trigger: teamCards[0],
-          start: 'top 82%',
-          toggleActions: 'play none none none'
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.12,
-        ease: 'power3.out'
-      });
+    // Helper: Staggered grid entrance
+    const animateGrid = (gridEl, childSelector, options = {}) => {
+      if (!gridEl || processedElements.has(gridEl)) return;
+      markProcessed(gridEl);
+
+      const children = Array.from(gridEl.querySelectorAll(childSelector)).filter(
+        (child) => !processedElements.has(child)
+      );
+      if (!children.length) return;
+
+      children.forEach((c) => markProcessed(c));
+
+      const yOffset = options.y !== undefined ? options.y : 35;
+      const duration = options.duration || 0.8;
+      const stagger = options.stagger !== undefined ? options.stagger : 0.09;
+      const ease = options.ease || 'power3.out';
+      const rect = gridEl.getBoundingClientRect();
+      const isAboveFold = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+
+      if (isAboveFold) {
+        gsap.fromTo(
+          children,
+          { opacity: 0, y: yOffset },
+          {
+            opacity: 1,
+            y: 0,
+            duration: duration,
+            stagger: stagger,
+            ease: ease,
+            clearProps: 'all'
+          }
+        );
+      } else {
+        gsap.fromTo(
+          children,
+          { opacity: 0, y: yOffset },
+          {
+            opacity: 1,
+            y: 0,
+            duration: duration,
+            stagger: stagger,
+            ease: ease,
+            clearProps: 'all',
+            scrollTrigger: {
+              trigger: gridEl,
+              start: 'top 85%',
+              once: true
+            }
+          }
+        );
+      }
+    };
+
+    // A. Hero Master Entrance Timeline (Homepage & Top Hero Area)
+    const heroTitle = document.querySelector('.tp-hero-title');
+    const heroBadge = document.querySelector('.tp-hero-badge');
+    const heroDesc = document.querySelector('.ar-hero-col-left p');
+    const heroButtons = document.querySelector('.ar-hero-col-left .tp-btn-gold')?.parentElement || document.querySelector('.tp-hero-buttons');
+    const heroFounderCard = document.querySelector('.ar-hero-floating-card');
+
+    if (heroTitle || heroDesc || heroFounderCard) {
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      if (heroBadge) {
+        markProcessed(heroBadge);
+        heroTl.fromTo(heroBadge, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }, 0.05);
+      }
+      if (heroTitle) {
+        markProcessed(heroTitle);
+        heroTl.fromTo(heroTitle, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', clearProps: 'all' }, 0.1);
+      }
+      if (heroDesc) {
+        markProcessed(heroDesc);
+        heroTl.fromTo(heroDesc, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, clearProps: 'all' }, '-=0.5');
+      }
+      if (heroButtons) {
+        markProcessed(heroButtons);
+        heroTl.fromTo(heroButtons, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.75, clearProps: 'all' }, '-=0.5');
+      }
+      if (heroFounderCard) {
+        markProcessed(heroFounderCard);
+        heroTl.fromTo(heroFounderCard, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.85, clearProps: 'all' }, '-=0.6');
+      }
     }
 
-    // F. Featured Spotlight Case Studies
-    const caseCards = document.querySelectorAll('.tp-featured-case-section, .tp-case-study-hero, .case-study-card');
-    caseCards.forEach((c) => {
-      gsap.from(c, {
-        scrollTrigger: {
-          trigger: c,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1.0,
-        ease: 'power3.out'
-      });
+    // B. Staggered Grids: Service Grids, Testimonials Grids, Team Grids, Pricing Grids
+    document.querySelectorAll('.tp-service-grid').forEach((grid) => {
+      animateGrid(grid, '.tp-service-item', { y: 40, duration: 0.8, stagger: 0.1 });
     });
 
-    // G. PureCounter Animation with GSAP ScrollTrigger
+    document.querySelectorAll('.tp-testimonial-grid-8, .tp-testimonial-grid').forEach((grid) => {
+      animateGrid(grid, '.tp-testimonial-card', { y: 35, duration: 0.8, stagger: 0.1 });
+    });
+
+    document.querySelectorAll('.pricing-grid').forEach((grid) => {
+      animateGrid(grid, '.pricing-card', { y: 40, duration: 0.8, stagger: 0.12 });
+    });
+
+    document.querySelectorAll('.tp-about-grid').forEach((grid) => {
+      animateGrid(grid, '.tp-about-img-wrap, .tp-about-desc-box', { y: 35, duration: 0.85, stagger: 0.15 });
+    });
+
+    // C. Section Subtitles, Titles, and Large Headings
+    const sectionHeadings = document.querySelectorAll(
+      '.tp-section-subtitle, .tp-section-title-large, .tp-section-title, .tp-section-title-wrapper'
+    );
+    sectionHeadings.forEach((heading) => {
+      animateEntrance(heading, { y: 28, duration: 0.8 });
+    });
+
+    // D. Individual Standalone Cards & Sections
+    const standaloneCards = document.querySelectorAll(
+      '.tp-service-item, .tp-testimonial-card, .tp-featured-case-section, .tp-case-study-hero, .case-study-card, .tp-project-item, .tp-award-item, .call-back-inner, .tp-form-box, .tp-contact-info-wrap'
+    );
+    standaloneCards.forEach((card) => {
+      animateEntrance(card, { y: 35, duration: 0.8 });
+    });
+
+    // E. PureCounter Numbers Animation with ScrollTrigger
     const counters = document.querySelectorAll('.purecounter');
     counters.forEach((counter) => {
-      const target = parseInt(counter.getAttribute('data-target') || counter.textContent, 10);
+      if (processedElements.has(counter)) return;
+      markProcessed(counter);
+
+      const rawVal = counter.getAttribute('data-target') || counter.textContent.replace(/\D/g, '');
+      const target = parseInt(rawVal, 10);
       if (isNaN(target)) return;
 
       const obj = { val: 0 };
@@ -163,7 +232,7 @@ export function initScrollAnimations() {
         scrollTrigger: {
           trigger: counter,
           start: 'top 90%',
-          toggleActions: 'play none none none'
+          once: true
         },
         onUpdate: () => {
           counter.textContent = Math.round(obj.val);
@@ -171,33 +240,38 @@ export function initScrollAnimations() {
       });
     });
 
-  } else {
-    // High-performance IntersectionObserver Fallback
-    const fallbackElements = document.querySelectorAll('.tp-service-item, .tp-testimonial-card, .tp-section-title, .tp-section-title-large, .tp-hero-more-info, .purecounter');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('lux-active', 'fade-up-active');
-          if (entry.target.classList.contains('purecounter')) {
-            const target = parseInt(entry.target.getAttribute('data-target') || entry.target.textContent, 10);
-            if (!isNaN(target)) {
-              let cur = 0;
-              const step = Math.ceil(target / 40);
-              const timer = setInterval(() => {
-                cur += step;
-                if (cur >= target) {
-                  entry.target.textContent = target;
-                  clearInterval(timer);
-                } else {
-                  entry.target.textContent = cur;
-                }
-              }, 30);
-            }
-          }
-          obs.unobserve(entry.target);
+    // Refresh ScrollTrigger positions once DOM is stable
+    ScrollTrigger.refresh();
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+
+    // Safety Fallback: Guarantee no element remains stuck at opacity 0 under any circumstance
+    setTimeout(() => {
+      document.querySelectorAll('[data-lux-animated]').forEach((el) => {
+        if (window.getComputedStyle(el).opacity === '0') {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
         }
       });
-    }, { threshold: 0.1 });
+    }, 2500);
+
+  } else {
+    // Non-GSAP Fallback: High-performance IntersectionObserver
+    const fallbackElements = document.querySelectorAll(
+      '.tp-service-item, .tp-testimonial-card, .tp-section-title, .tp-section-title-large, .tp-hero-more-info, .purecounter'
+    );
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lux-active', 'fade-up-active');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
 
     fallbackElements.forEach((el) => {
       el.classList.add('lux-fade-up');

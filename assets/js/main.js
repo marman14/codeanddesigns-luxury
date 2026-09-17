@@ -7,7 +7,7 @@ import { initCustomCursor } from './cursor.js?v=8.0';
 import { initProjectHoverDisplacement } from './hover-displacement.js?v=8.0';
 import { initScrollAnimations } from './animations.js?v=8.0';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   // 1. Initialize Core Interactive Systems
   initCustomCursor();
   initProjectHoverDisplacement();
@@ -211,4 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (parentLi) parentLi.classList.add('active');
     }
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+
