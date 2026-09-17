@@ -577,13 +577,13 @@ button {
 }
 
 /* ==========================================================================
-   HERO SECTION (CLEAN LIGHT BACKDROP)
+   HERO SECTION (CLEAN EDITORIAL LUXURY THEME)
    ========================================================================== */
 .tp-hero-area {
   position: relative;
-  min-height: 90vh;
+  min-height: 88vh;
   padding-top: 160px;
-  padding-bottom: 90px;
+  padding-bottom: 80px;
   display: flex;
   align-items: center;
   background-color: var(--bg-primary);
@@ -625,24 +625,16 @@ button {
   display: grid !important;
   grid-template-columns: 1.15fr 0.85fr !important;
   align-items: center !important;
-  gap: 60px !important;
-  overflow: hidden !important;
+  gap: 48px !important;
   width: 100% !important;
   position: relative !important;
   z-index: 10 !important;
 }
 
-@media (max-width: 1200px) {
-  .ar-hero-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 40px !important;
-  }
-}
-
 @media (max-width: 991px) {
   .ar-hero-grid {
     grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    gap: 32px !important;
   }
 }
 
@@ -664,59 +656,34 @@ button {
   pointer-events: auto !important;
 }
 
-/* Right Column: 3D Knot Mesh & Founder Card */
+/* Right Column: Clean Whitespace Area with Founder Card */
 .ar-hero-col-right {
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
+  align-items: flex-end !important;
   justify-content: center !important;
-  gap: 20px !important;
   position: relative !important;
   z-index: 5 !important;
   pointer-events: auto !important;
   width: 100% !important;
-}
-
-.ar-canvas-wrapper {
-  width: 100% !important;
-  max-width: 480px !important;
-  height: 380px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  pointer-events: auto !important;
-  z-index: 5 !important;
-  border-radius: var(--radius-md);
-  background: transparent;
-  margin: 0 auto;
-}
-
-#hero-webgl-canvas {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: none !important;
-  display: block !important;
-  object-fit: contain !important;
-  z-index: 1 !important;
 }
 
 @media (max-width: 991px) {
   .ar-hero-col-right {
-    align-items: center !important;
-  }
-  .ar-canvas-wrapper {
-    height: 320px !important;
+    align-items: flex-start !important;
+    margin-top: 10px !important;
   }
 }
 
-/* Founder card sits cleanly in right column */
+/* Founder card sits in clean spacious right column */
 .ar-hero-floating-card,
 .tp-hero-more-info {
   position: relative !important;
   z-index: 10 !important;
   background: #ffffff !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
   width: 100% !important;
   max-width: 460px !important;
 }
