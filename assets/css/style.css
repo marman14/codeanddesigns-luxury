@@ -577,13 +577,13 @@ button {
 }
 
 /* ==========================================================================
-   HERO SECTION (CLEAN LIGHT BACKDROP WITH 3D THREE.JS CANVAS)
+   HERO SECTION (CLEAN LIGHT BACKDROP)
    ========================================================================== */
 .tp-hero-area {
   position: relative;
-  min-height: 94vh;
+  min-height: 90vh;
   padding-top: 160px;
-  padding-bottom: 80px;
+  padding-bottom: 90px;
   display: flex;
   align-items: center;
   background-color: var(--bg-primary);
@@ -611,7 +611,7 @@ button {
 .tp-hero-area div[class*="particle"],
 .tp-hero-area div[class*="shape"],
 .tp-hero-area div[class*="circle"]:not(.tp-hero-avater):not(.tp-btn-circle),
-[class*="particle"]:not(#hero-webgl-canvas) {
+[class*="particle"] {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -623,19 +623,26 @@ button {
    ========================================================================== */
 .ar-hero-grid {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
   align-items: center !important;
-  gap: 40px !important;
+  gap: 60px !important;
   overflow: hidden !important;
   width: 100% !important;
   position: relative !important;
   z-index: 10 !important;
 }
 
+@media (max-width: 1200px) {
+  .ar-hero-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px !important;
+  }
+}
+
 @media (max-width: 991px) {
   .ar-hero-grid {
     grid-template-columns: 1fr !important;
-    gap: 30px !important;
+    gap: 40px !important;
   }
 }
 
@@ -657,61 +664,33 @@ button {
   pointer-events: auto !important;
 }
 
-/* Right Column: Contains ONLY the 3D knot canvas and the founder card stacked vertically */
-.ar-hero-col-right,
-.ar-hero-visual {
+/* Right Column: Clean, intentional premium whitespace area with Founder card */
+.ar-hero-col-right {
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  gap: 16px !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
   position: relative !important;
   z-index: 5 !important;
   pointer-events: auto !important;
-  overflow: hidden !important;
   width: 100% !important;
 }
 
-/* 1. Strict Canvas Isolation Container */
-.ar-canvas-wrapper,
-.ar-hero-visual .ar-canvas-wrapper,
-.ar-hero-visual div[class*="canvas"] {
-  width: 100% !important;
-  max-width: 500px !important;
-  height: 420px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  pointer-events: auto !important;
-  z-index: 5 !important;
-  border-radius: var(--radius-md);
-  background: transparent;
-  margin: 0 auto;
+@media (max-width: 991px) {
+  .ar-hero-col-right {
+    align-items: flex-start !important;
+  }
 }
 
-/* 2. Prevent Bleeding: Canvas element inside wrapper */
-#hero-webgl-canvas,
-.ar-hero-visual canvas {
-  position: absolute !important;
-  inset: 0 !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: none !important;
-  display: block !important;
-  object-fit: contain !important;
-  z-index: 1 !important;
-}
-
-/* Founder card sits safely below canvas */
+/* Founder card sits cleanly in right column */
 .ar-hero-floating-card,
 .tp-hero-more-info {
   position: relative !important;
   z-index: 10 !important;
-  margin-top: 5px !important;
   background: #ffffff !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
   width: 100% !important;
-  max-width: 480px !important;
+  max-width: 460px !important;
 }
 
 .tp-hero-title-box {
