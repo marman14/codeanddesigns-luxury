@@ -2305,19 +2305,82 @@ textarea.form-control {
   padding-left: 6px;
 }
 
-/* Huge Watermark Copyright Typography */
+/* ==========================================================================
+   HUGE CONTINUOUS RUNNING MARQUEE FOOTER WATERMARK
+   ========================================================================== */
 .tp-footer-watermark {
-  font-size: clamp(4rem, 14vw, 15rem);
-  font-weight: 600;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.05);
-  text-align: center;
+  width: 100%;
+  overflow: hidden;
   user-select: none;
   pointer-events: none;
-  margin-bottom: 40px;
+  padding: 10px 0 25px;
+  margin: 10px 0 20px;
+  position: relative;
   white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
+
+.tp-footer-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: tpFooterMarquee 45s linear infinite;
+}
+
+.tp-footer-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3.5vw, 60px);
+  padding-right: clamp(24px, 3.5vw, 60px);
+  flex-shrink: 0;
+}
+
+.tp-footer-marquee-text {
+  font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: clamp(6.5rem, 17vw, 19.5rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.045);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.13);
+  white-space: nowrap;
+  transition: color 0.4s ease;
+}
+
+.tp-footer-marquee-star {
+  font-size: clamp(2.2rem, 5.5vw, 6rem);
+  color: var(--accent-gold);
+  opacity: 0.45;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+@keyframes tpFooterMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .tp-footer-watermark {
+    padding: 8px 0 16px;
+    margin: 5px 0 15px;
+  }
+  .tp-footer-marquee-text {
+    font-size: clamp(4.5rem, 18vw, 8rem);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+  }
+  .tp-footer-marquee-track {
+    animation-duration: 30s;
+  }
+}
+
 
 .tp-footer-bottom {
   display: flex;
