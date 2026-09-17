@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="assets/css/style.css?v=8.0" />
   <link rel="stylesheet" href="assets/css/animations.css?v=8.0" />
 
-  <!-- GSAP & ScrollTrigger Motion Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP & ScrollTrigger Animation CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -496,5 +496,62 @@
   </footer>
 
   <script type="module" src="assets/js/main.js?v=8.0"></script>
+
+  <!-- Global GSAP & ScrollTrigger Smooth Motion Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const motionTargets = [
+          '.tp-section-subtitle',
+          '.tp-section-title-large',
+          '.tp-section-title',
+          'h1',
+          'h2',
+          'h3',
+          'h4',
+          '.tp-about-img-wrap',
+          '.tp-about-desc-box',
+          '.tp-testimonial-card',
+          '.tp-featured-case-section',
+          '.call-back-inner'
+        ];
+
+        motionTargets.forEach(function(selector) {
+          gsap.utils.toArray(selector).forEach(function(el) {
+            gsap.from(el, {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              },
+              y: 35,
+              opacity: 0,
+              duration: 0.85,
+              ease: 'power3.out'
+            });
+          });
+        });
+
+        // Staggered Team Cards Grid
+        const teamCards = document.querySelectorAll('.tp-about-section .tp-testimonial-card, .tp-testimonial-card');
+        if (teamCards.length) {
+          gsap.from(teamCards, {
+            scrollTrigger: {
+              trigger: teamCards[0],
+              start: 'top 82%',
+              toggleActions: 'play none none none'
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.85,
+            stagger: 0.1,
+            ease: 'power3.out'
+          });
+        }
+      }
+    });
+  </script>
 </body>
 </html>
