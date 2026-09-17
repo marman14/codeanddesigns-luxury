@@ -56,47 +56,41 @@ export function initScrollAnimations() {
       markProcessed(el);
 
       const yOffset = options.y !== undefined ? options.y : 30;
+      const xOffset = options.x !== undefined ? options.x : 0;
       const duration = options.duration || 0.8;
       const delay = options.delay || 0;
       const ease = options.ease || 'power3.out';
       const rect = el.getBoundingClientRect();
-      const isAboveFold = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+      const fromVars = { opacity: 0, y: yOffset };
+      if (xOffset) fromVars.x = xOffset;
+      if (options.scale) fromVars.scale = options.scale;
+
+      const toVars = {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        scale: 1,
+        duration: duration,
+        delay: delay,
+        ease: ease,
+        clearProps: 'all'
+      };
 
       if (isAboveFold) {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: yOffset },
-          {
-            opacity: 1,
-            y: 0,
-            duration: duration,
-            delay: delay,
-            ease: ease,
-            clearProps: 'all'
-          }
-        );
+        gsap.fromTo(el, fromVars, toVars);
       } else {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: yOffset },
-          {
-            opacity: 1,
-            y: 0,
-            duration: duration,
-            delay: delay,
-            ease: ease,
-            clearProps: 'all',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 88%',
-              once: true
-            }
-          }
-        );
+        toVars.scrollTrigger = {
+          trigger: el,
+          start: options.start || 'top 88%',
+          once: true
+        };
+        gsap.fromTo(el, fromVars, toVars);
       }
     };
 
-    // Helper: Staggered grid entrance
+    // Helper: Staggered grid/container entrance
     const animateGrid = (gridEl, childSelector, options = {}) => {
       if (!gridEl || processedElements.has(gridEl)) return;
       markProcessed(gridEl);
@@ -109,112 +103,216 @@ export function initScrollAnimations() {
       children.forEach((c) => markProcessed(c));
 
       const yOffset = options.y !== undefined ? options.y : 35;
-      const duration = options.duration || 0.8;
-      const stagger = options.stagger !== undefined ? options.stagger : 0.09;
+      const duration = options.duration || 0.85;
+      const stagger = options.stagger !== undefined ? options.stagger : 0.1;
       const ease = options.ease || 'power3.out';
       const rect = gridEl.getBoundingClientRect();
-      const isAboveFold = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+      const fromVars = { opacity: 0, y: yOffset };
+      if (options.scale) fromVars.scale = options.scale;
+
+      const toVars = {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: duration,
+        stagger: stagger,
+        ease: ease,
+        clearProps: 'all'
+      };
 
       if (isAboveFold) {
-        gsap.fromTo(
-          children,
-          { opacity: 0, y: yOffset },
-          {
-            opacity: 1,
-            y: 0,
-            duration: duration,
-            stagger: stagger,
-            ease: ease,
-            clearProps: 'all'
-          }
-        );
+        gsap.fromTo(children, fromVars, toVars);
       } else {
-        gsap.fromTo(
-          children,
-          { opacity: 0, y: yOffset },
-          {
-            opacity: 1,
-            y: 0,
-            duration: duration,
-            stagger: stagger,
-            ease: ease,
-            clearProps: 'all',
-            scrollTrigger: {
-              trigger: gridEl,
-              start: 'top 85%',
-              once: true
-            }
-          }
-        );
+        toVars.scrollTrigger = {
+          trigger: gridEl,
+          start: options.start || 'top 86%',
+          once: true
+        };
+        gsap.fromTo(children, fromVars, toVars);
       }
     };
 
-    // A. Hero Master Entrance Timeline (Homepage & Top Hero Area)
-    const heroTitle = document.querySelector('.tp-hero-title');
-    const heroBadge = document.querySelector('.tp-hero-badge');
-    const heroDesc = document.querySelector('.ar-hero-col-left p');
-    const heroButtons = document.querySelector('.ar-hero-col-left .tp-btn-gold')?.parentElement || document.querySelector('.tp-hero-buttons');
-    const heroFounderCard = document.querySelector('.ar-hero-floating-card');
+    // Helper: Media / Image reveal with subtle scale
+    const animateMedia = (mediaEl, options = {}) => {
+      if (!mediaEl || processedElements.has(mediaEl)) return;
+      // Skip header logo, offcanvas logo, and footer watermark
+      if (mediaEl.closest('.tp-header-logo, .tp-footer-watermark, .tp-offcanvas-area')) return;
+      markProcessed(mediaEl);
 
-    if (heroTitle || heroDesc || heroFounderCard) {
+      const yOffset = options.y !== undefined ? options.y : 22;
+      const duration = options.duration || 0.85;
+      const delay = options.delay || 0;
+      const ease = options.ease || 'power3.out';
+      const rect = mediaEl.getBoundingClientRect();
+      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+      const fromVars = { opacity: 0, y: yOffset, scale: 0.95 };
+      const toVars = {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: duration,
+        delay: delay,
+        ease: ease,
+        clearProps: 'all'
+      };
+
+      if (isAboveFold) {
+        gsap.fromTo(mediaEl, fromVars, toVars);
+      } else {
+        toVars.scrollTrigger = {
+          trigger: mediaEl,
+          start: 'top 88%',
+          once: true
+        };
+        gsap.fromTo(mediaEl, fromVars, toVars);
+      }
+    };
+
+    // =========================================================================
+    // A. HERO MASTER ENTRANCE (HOMEPAGE & ALL SUBPAGE HEROES)
+    // =========================================================================
+    const heroAreas = document.querySelectorAll('.tp-hero-area, .tp-case-study-hero');
+    heroAreas.forEach((hero) => {
+      const heroTitle = hero.querySelector('.tp-hero-title, h1');
+      const heroBadge = hero.querySelector('.tp-hero-badge, .tp-section-subtitle');
+      const heroDesc = hero.querySelector('.ar-hero-col-left p, p');
+      const heroButtons = hero.querySelector('.tp-hero-buttons, .tp-btn-gold')?.parentElement || hero.querySelector('.tp-btn-gold');
+      const heroFounderCard = hero.querySelector('.ar-hero-floating-card, .tp-hero-more-info');
+
       const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      if (heroBadge) {
+      if (heroBadge && !processedElements.has(heroBadge)) {
         markProcessed(heroBadge);
-        heroTl.fromTo(heroBadge, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }, 0.05);
+        heroTl.fromTo(heroBadge, { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }, 0.05);
       }
-      if (heroTitle) {
+      if (heroTitle && !processedElements.has(heroTitle)) {
         markProcessed(heroTitle);
-        heroTl.fromTo(heroTitle, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', clearProps: 'all' }, 0.1);
+        heroTl.fromTo(heroTitle, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', clearProps: 'all' }, 0.12);
       }
-      if (heroDesc) {
+      if (heroDesc && !processedElements.has(heroDesc)) {
         markProcessed(heroDesc);
-        heroTl.fromTo(heroDesc, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, clearProps: 'all' }, '-=0.5');
+        heroTl.fromTo(heroDesc, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, clearProps: 'all' }, '-=0.5');
       }
-      if (heroButtons) {
+      if (heroButtons && !processedElements.has(heroButtons)) {
         markProcessed(heroButtons);
         heroTl.fromTo(heroButtons, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.75, clearProps: 'all' }, '-=0.5');
       }
-      if (heroFounderCard) {
+      if (heroFounderCard && !processedElements.has(heroFounderCard)) {
         markProcessed(heroFounderCard);
-        heroTl.fromTo(heroFounderCard, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.85, clearProps: 'all' }, '-=0.6');
+        heroTl.fromTo(heroFounderCard, { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, clearProps: 'all' }, '-=0.6');
       }
-    }
+    });
 
-    // B. Staggered Grids: Service Grids, Testimonials Grids, Team Grids, Pricing Grids
+    // =========================================================================
+    // B. MULTI-CARD GRIDS & LAYOUT CONTAINERS (CASCADE STAGGER)
+    // =========================================================================
+    // 1. Service Grids
     document.querySelectorAll('.tp-service-grid').forEach((grid) => {
-      animateGrid(grid, '.tp-service-item', { y: 40, duration: 0.8, stagger: 0.1 });
+      animateGrid(grid, '.tp-service-item, .tp-service-card', { y: 40, duration: 0.85, stagger: 0.1 });
     });
 
+    // 2. Testimonial Grids & Review Lists
     document.querySelectorAll('.tp-testimonial-grid-8, .tp-testimonial-grid').forEach((grid) => {
-      animateGrid(grid, '.tp-testimonial-card', { y: 35, duration: 0.8, stagger: 0.1 });
+      animateGrid(grid, '.tp-testimonial-card', { y: 35, duration: 0.85, stagger: 0.1 });
     });
 
+    // 3. Pricing Grids
     document.querySelectorAll('.pricing-grid').forEach((grid) => {
-      animateGrid(grid, '.pricing-card', { y: 40, duration: 0.8, stagger: 0.12 });
+      animateGrid(grid, '.pricing-card', { y: 40, duration: 0.85, stagger: 0.12 });
     });
 
+    // 4. Onboarding & Process Grids
+    document.querySelectorAll('.tp-onboarding-grid').forEach((grid) => {
+      animateGrid(grid, '.tp-onboarding-card', { y: 35, duration: 0.85, stagger: 0.1 });
+    });
+
+    // 5. About Grids
     document.querySelectorAll('.tp-about-grid').forEach((grid) => {
-      animateGrid(grid, '.tp-about-img-wrap, .tp-about-desc-box', { y: 35, duration: 0.85, stagger: 0.15 });
+      animateGrid(grid, '.tp-about-img-wrap, .tp-about-desc-box, .tp-about-card', { y: 35, duration: 0.85, stagger: 0.12 });
     });
 
-    // C. Section Subtitles, Titles, and Large Headings
-    const sectionHeadings = document.querySelectorAll(
-      '.tp-section-subtitle, .tp-section-title-large, .tp-section-title, .tp-section-title-wrapper'
+    // 6. Generic Grid Containers (Catching Team grids, pillar cards, capability columns, gallery photos)
+    document.querySelectorAll('div[style*="grid-template-columns"], .tp-counter-grid, .tp-funfact-row').forEach((grid) => {
+      // Don't double-animate already handled grids
+      if (grid.closest('.tp-footer-area, .tp-offcanvas-area')) return;
+      animateGrid(grid, ':scope > div', { y: 35, duration: 0.85, stagger: 0.1 });
+    });
+
+    // 7. Bullet Checkmark Lists
+    document.querySelectorAll('.card-bullet-list').forEach((list) => {
+      animateGrid(list, 'li', { y: 16, duration: 0.65, stagger: 0.06 });
+    });
+
+    // =========================================================================
+    // C. ALL HEADINGS & SUBTITLES ACROSS EVERY PAGE & SECTION
+    // =========================================================================
+    const allHeadings = document.querySelectorAll(
+      'section h1, section h2, section h3, section h4, article h1, article h2, article h3, article h4, main h1, main h2, main h3, main h4, .tp-section-subtitle, .tp-section-title-large, .tp-section-title, .tp-section-title-wrapper'
     );
-    sectionHeadings.forEach((heading) => {
-      animateEntrance(heading, { y: 28, duration: 0.8 });
+    allHeadings.forEach((heading) => {
+      if (heading.closest('.tp-header-area, .tp-footer-area, .tp-offcanvas-area')) return;
+      // Skip if heading is inside a card that was already animated
+      if (heading.closest('.tp-service-item, .tp-testimonial-card, .tp-pillar-card, .tp-onboarding-card, .pricing-card, .case-study-card, .tp-project-item, .tp-award-item, .ar-hero-floating-card')) return;
+      animateEntrance(heading, { y: 28, duration: 0.85 });
     });
 
-    // D. Individual Standalone Cards & Sections
-    const standaloneCards = document.querySelectorAll(
-      '.tp-service-item, .tp-testimonial-card, .tp-featured-case-section, .tp-case-study-hero, .case-study-card, .tp-project-item, .tp-award-item, .call-back-inner, .tp-form-box, .tp-contact-info-wrap'
+    // =========================================================================
+    // D. ALL PARAGRAPHS & DESCRIPTIONS (NO STATIC TEXT)
+    // =========================================================================
+    const allParagraphs = document.querySelectorAll(
+      'section p, article p, main p, .tp-form-box p, .tp-contact-info-wrap p'
     );
-    standaloneCards.forEach((card) => {
-      animateEntrance(card, { y: 35, duration: 0.8 });
+    allParagraphs.forEach((p) => {
+      if (p.closest('.tp-header-area, .tp-footer-area, .tp-offcanvas-area')) return;
+      // Skip if inside an already-animated card component to avoid double displacement
+      if (p.closest('.tp-service-item, .tp-testimonial-card, .tp-pillar-card, .tp-onboarding-card, .pricing-card, .case-study-card, .tp-project-item, .tp-award-item, .ar-hero-floating-card, .contact-card-badge')) return;
+      animateEntrance(p, { y: 20, duration: 0.8 });
     });
 
-    // E. PureCounter Numbers Animation with ScrollTrigger
+    // =========================================================================
+    // E. ALL STANDALONE CARDS, BOXES, ACCORDIONS, AND FORMS
+    // =========================================================================
+    const standaloneBoxes = document.querySelectorAll(
+      '.tp-service-item, .tp-pillar-card, .tp-testimonial-card, .tp-onboarding-card, .pricing-card, .case-study-card, .tp-project-item, .tp-award-item, .tp-featured-case-section, .call-back-inner, .tp-form-box, .tp-contact-info-wrap, .tp-contact-info-card, .appointment-wrapper, .tp-funfact-item, .tp-faq-item, .product-card'
+    );
+    standaloneBoxes.forEach((box) => {
+      if (box.closest('.tp-footer-area, .tp-offcanvas-area')) return;
+      animateEntrance(box, { y: 35, duration: 0.85 });
+    });
+
+    // =========================================================================
+    // F. ALL IMAGES & MEDIA ACROSS SECTIONS
+    // =========================================================================
+    const allImages = document.querySelectorAll(
+      'section img, article img, main img, .tp-about-img-wrap img, .tp-testimonial-card img, .tp-hero-avater img'
+    );
+    allImages.forEach((img) => {
+      if (img.closest('.tp-header-logo, .tp-footer-area, .tp-offcanvas-area')) return;
+      animateMedia(img, { y: 22, duration: 0.85 });
+    });
+
+    const allVideos = document.querySelectorAll('section video, section iframe:not(.calendly-inline-widget)');
+    allVideos.forEach((vid) => {
+      animateEntrance(vid, { y: 30, duration: 0.85 });
+    });
+
+    // =========================================================================
+    // G. ALL BUTTONS & CTAS
+    // =========================================================================
+    const allButtons = document.querySelectorAll(
+      'section .tp-btn-gold, main .tp-btn-gold, .ar-cta-btn, .tp-btn-white, .btn-luxury, section button[type="submit"]'
+    );
+    allButtons.forEach((btn) => {
+      if (btn.closest('.tp-header-area, .tp-footer-area, .tp-offcanvas-area')) return;
+      animateEntrance(btn, { y: 16, duration: 0.75, ease: 'power2.out' });
+    });
+
+    // =========================================================================
+    // H. NUMBERS & PURECOUNTERS
+    // =========================================================================
     const counters = document.querySelectorAll('.purecounter');
     counters.forEach((counter) => {
       if (processedElements.has(counter)) return;
@@ -254,7 +352,7 @@ export function initScrollAnimations() {
           el.style.transform = 'none';
         }
       });
-    }, 2500);
+    }, 2200);
 
   } else {
     // Non-GSAP Fallback: High-performance IntersectionObserver
