@@ -238,33 +238,68 @@ button {
   padding-left: 28px;
 }
 
-/* Services Megamenu */
+/* ==================== SERVICES MEGAMENU / DROPDOWN (.ar-megamenu & .tp-megamenu) ==================== */
+@keyframes arMegamenuSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ar-megamenu,
 .tp-megamenu {
+  display: none !important;
   position: absolute;
-  top: 100%;
-  left: -120px;
-  width: 680px;
+  top: calc(100% + 8px);
+  left: -80px;
+  width: 700px;
+  max-width: 90vw;
   background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 24px;
+  box-shadow: 0 24px 50px rgba(1, 27, 57, 0.14);
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  z-index: 9999;
+  pointer-events: none;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 20px 45px rgba(1, 27, 57, 0.12);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  z-index: 1000;
 }
 
-.has-dropdown:hover .tp-megamenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+/* Invisible bridge so mouse does not lose hover between link and menu */
+.ar-megamenu::before,
+.tp-megamenu::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: transparent;
 }
 
+/* Display and slide down on hover, focus-within, or click toggle (.dropdown-open) */
+.has-dropdown:hover > .ar-megamenu,
+.has-dropdown:hover > .tp-megamenu,
+.has-dropdown:focus-within > .ar-megamenu,
+.has-dropdown:focus-within > .tp-megamenu,
+.has-dropdown.dropdown-open > .ar-megamenu,
+.has-dropdown.dropdown-open > .tp-megamenu {
+  display: grid !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+  animation: arMegamenuSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ar-megamenu-item,
 .tp-megamenu-item {
   display: flex;
   flex-direction: column;
@@ -276,6 +311,7 @@ button {
   text-decoration: none;
 }
 
+.ar-megamenu-item:hover,
 .tp-megamenu-item:hover {
   background: #ffffff;
   border-color: var(--accent-gold);
@@ -283,6 +319,7 @@ button {
   box-shadow: 0 8px 20px rgba(190, 140, 51, 0.15);
 }
 
+.ar-megamenu-title,
 .tp-megamenu-title {
   font-size: 1.15rem;
   font-weight: 600;
@@ -293,6 +330,7 @@ button {
   justify-content: space-between;
 }
 
+.ar-megamenu-desc,
 .tp-megamenu-desc {
   font-size: 0.95rem;
   color: var(--text-muted);

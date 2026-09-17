@@ -42,7 +42,35 @@ document.addEventListener('DOMContentLoaded', () => {
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
+    if (e.key === 'Escape') {
+      closeDrawer();
+      document.querySelectorAll('.has-dropdown').forEach((d) => d.classList.remove('dropdown-open'));
+    }
+  });
+
+  // 2b. Services Megamenu Click & Touch Toggle
+  const dropdownItems = document.querySelectorAll('.has-dropdown');
+  dropdownItems.forEach((dropdown) => {
+    const trigger = dropdown.querySelector(':scope > a');
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        // Allow hover on desktop, but allow click to toggle
+        const isHoverSupported = window.matchMedia('(hover: hover)').matches;
+        if (!isHoverSupported || window.innerWidth <= 1200) {
+          e.preventDefault();
+          dropdown.classList.toggle('dropdown-open');
+        }
+      });
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    dropdownItems.forEach((dropdown) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('dropdown-open');
+      }
+    });
   });
 
   // 3. Interactive Pricing Tabs (if present on page)
