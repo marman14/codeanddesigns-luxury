@@ -9,15 +9,15 @@ export function initHeroThreeScene() {
   if (!canvas || typeof THREE === 'undefined') return;
 
   const parent = canvas.parentElement;
-  let width = parent.clientWidth || window.innerWidth;
-  let height = parent.clientHeight || window.innerHeight;
+  let width = parent.clientWidth || 500;
+  let height = parent.clientHeight || 280;
 
   // Scene setup
   const scene = new THREE.Scene();
 
   // Camera setup
-  const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 1000);
-  camera.position.z = 5.8;
+  const camera = new THREE.PerspectiveCamera(46, width / height, 0.1, 1000);
+  camera.position.z = 5.2;
 
   // Renderer setup
   const renderer = new THREE.WebGLRenderer({
@@ -47,8 +47,8 @@ export function initHeroThreeScene() {
   const mainGroup = new THREE.Group();
   scene.add(mainGroup);
 
-  // 1. High-end Sculptural Torus Knot (Refined Architectural Scale)
-  const geomKnot = new THREE.TorusKnotGeometry(1.2, 0.28, 140, 24, 2, 3);
+  // 1. High-end Sculptural Torus Knot (Calibrated for 280px container)
+  const geomKnot = new THREE.TorusKnotGeometry(0.95, 0.22, 140, 24, 2, 3);
   
   // Custom luxury metallic gold physical material with ambient background transparency
   const matKnot = new THREE.MeshPhysicalMaterial({
@@ -76,14 +76,14 @@ export function initHeroThreeScene() {
   wireMesh.scale.set(1.003, 1.003, 1.003);
   mainGroup.add(wireMesh);
 
-  // Responsive 3D Positioning: Centered strictly inside Column 2 canvas container
+  // Responsive 3D Positioning: Centered strictly inside 280px Column 2 canvas container
   function updateGroupPosition() {
     mainGroup.position.set(0, 0, 0);
     const currentW = parent.clientWidth || 500;
     if (currentW >= 550) {
-      mainGroup.scale.set(1.0, 1.0, 1.0);
+      mainGroup.scale.set(0.92, 0.92, 0.92);
     } else if (currentW >= 400) {
-      mainGroup.scale.set(0.85, 0.85, 0.85);
+      mainGroup.scale.set(0.82, 0.82, 0.82);
     } else {
       mainGroup.scale.set(0.7, 0.7, 0.7);
     }
@@ -91,15 +91,15 @@ export function initHeroThreeScene() {
 
   updateGroupPosition();
 
-  // 2. Floating Starfield / Particle Constellation Nodes in Gold & Navy
-  const particleCount = 120;
+  // 2. Floating Starfield / Particle Constellation Nodes in Gold & Navy (Constrained to 280px canvas)
+  const particleCount = 100;
   const particleGeom = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = (Math.random() - 0.5) * 10;
-    positions[i + 1] = (Math.random() - 0.5) * 8;
-    positions[i + 2] = (Math.random() - 0.5) * 6;
+    positions[i] = (Math.random() - 0.5) * 8;
+    positions[i + 1] = (Math.random() - 0.5) * 3.8;
+    positions[i + 2] = (Math.random() - 0.5) * 4;
   }
 
   particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -155,8 +155,8 @@ export function initHeroThreeScene() {
 
   // Resize Handler
   window.addEventListener('resize', () => {
-    width = parent.clientWidth || window.innerWidth;
-    height = parent.clientHeight || window.innerHeight;
+    width = parent.clientWidth || 500;
+    height = parent.clientHeight || 280;
 
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
