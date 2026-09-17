@@ -326,13 +326,26 @@ html {
   }
 }
 
+@keyframes luxMetricBreathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(190, 140, 51, 0.2));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(190, 140, 51, 0.6));
+  }
+}
+
 /* Apply Continuous Floating & Breathing to Cards across the entire site */
-.tp-service-item:nth-child(3n+1) {
+.tp-service-item:nth-child(3n+1),
+.tp-onboarding-card:nth-child(odd) {
   animation: luxCardFloatA 6.5s ease-in-out infinite, luxPulseGlow 6s ease-in-out infinite;
   will-change: transform, box-shadow;
 }
 
-.tp-service-item:nth-child(3n+2) {
+.tp-service-item:nth-child(3n+2),
+.tp-onboarding-card:nth-child(even) {
   animation: luxCardFloatB 7.5s ease-in-out infinite 0.6s, luxPulseGlow 6.5s ease-in-out infinite 0.6s;
   will-change: transform, box-shadow;
 }
@@ -377,8 +390,11 @@ html {
   will-change: transform, box-shadow;
 }
 
-.tp-contact-info-card {
+.tp-contact-info-card,
+.call-back-inner,
+.tp-form-box {
   animation: luxPulseGlow 6.5s ease-in-out infinite;
+  will-change: box-shadow, border-color;
 }
 
 /* Pause perpetual floating during user hover for crisp interactive 3D response */
@@ -386,8 +402,24 @@ html {
 .tp-testimonial-card:hover,
 .tp-pillar-card:hover,
 .pricing-card:hover,
-.tp-process-card:hover {
+.tp-process-card:hover,
+.tp-onboarding-card:hover,
+.call-back-inner:hover {
   animation-play-state: paused;
+}
+
+/* Continuous Stats Counter & Metrics Pulse across all pages */
+.purecounter,
+.case-metric-item .val,
+.tp-counter-item .number,
+.tp-funfact-item .number,
+.tp-onboarding-step-num,
+.tp-service-number,
+.tp-work-number,
+.counter-number {
+  display: inline-block;
+  animation: luxMetricBreathe 4s ease-in-out infinite;
+  will-change: transform, filter;
 }
 
 /* Continuous Icon Breathing across all sections */
@@ -395,22 +427,69 @@ html {
 .tp-service-icon svg,
 .ar-badge-icon,
 .tp-pillar-icon svg,
-.tp-btn-gold .tp-btn-circle {
+.tp-btn-gold .tp-btn-circle,
+.reference-card-icon,
+.reference-card-icon .inner-square,
+.tp-faq-btn svg {
   animation: luxIconBreathe 3.8s ease-in-out infinite;
   display: inline-block;
   will-change: transform, filter;
 }
 
-/* Continuous Badge & Accent Shimmer */
+/* Continuous Badge & Tag Shimmer across all pages */
 .case-badge,
 .tp-section-subtitle,
-.tp-hero-badge-pill {
+.tp-hero-badge-pill,
+.contact-card-badge,
+.badge,
+.tp-onboarding-duration,
+.tp-onboarding-tag,
+.ar-solo-badge-floating {
   animation: luxBadgePulse 5s ease-in-out infinite;
   display: inline-flex;
 }
 
-.tp-btn-gold {
-  animation: luxButtonGlow 4s ease-in-out infinite;
+.tp-service-tags span {
+  animation: luxBadgePulse 5.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.tp-service-tags span:nth-child(even) {
+  animation-delay: 0.5s;
+}
+
+/* Accent text luminescence */
+.accent-italic,
+.text-editorial-accent,
+.tp-hero-title span.accent-italic {
+  animation: luxShimmer 5.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Luxury button ambient glow */
+.tp-btn-gold,
+.card-action-btn-white,
+.ar-cta-btn,
+.tp-btn-white,
+button[type="submit"] {
+  animation: luxButtonGlow 4.2s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* Image hover dynamics across all pages */
+.tp-about-img-wrap img,
+.case-img-box img,
+.case-img-box video,
+.ar-solo-img,
+.tp-testimonial-card img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: transform;
+}
+
+.tp-about-img-wrap:hover img,
+.case-img-box:hover img,
+.case-img-box:hover video {
+  transform: scale(1.035);
 }
 
 /* Apply Perpetual Floating to Founder Card & Solo Portrait */

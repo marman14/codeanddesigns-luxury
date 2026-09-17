@@ -434,7 +434,7 @@ export function initScrollAnimations() {
 
   // 3b. Interactive 3D Card Hover Tilts & Dynamic Physics
   const interactiveCards = document.querySelectorAll(
-    '.tp-service-item, .tp-testimonial-card, .tp-pillar-card, .pricing-card, .ar-solo-portrait-card, .case-study-card'
+    '.tp-service-item, .tp-testimonial-card, .tp-pillar-card, .pricing-card, .ar-solo-portrait-card, .case-study-card, .tp-onboarding-card, .tp-process-card, .tp-contact-info-card, .call-back-inner, .tp-form-box'
   );
   interactiveCards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
