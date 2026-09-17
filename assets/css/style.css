@@ -592,22 +592,27 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 0 !important;
   pointer-events: none;
-  opacity: 0.95;
+  opacity: 0.88;
 }
 
 .hero-content-layer {
   position: relative;
-  z-index: 2;
+  z-index: 20 !important;
   width: 100%;
+  pointer-events: auto;
 }
 
 .tp-hero-title-box {
+  position: relative;
+  z-index: 25 !important;
   margin-bottom: 30px;
 }
 
 .tp-hero-title {
+  position: relative;
+  z-index: 30 !important;
   font-size: clamp(3.8rem, 9.5vw, 10.5rem);
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -617,11 +622,21 @@ button {
 .tp-hero-title span {
   display: inline-block;
   position: relative;
+  z-index: 31 !important;
 }
 
 .tp-hero-title span.accent-italic {
   color: var(--accent-gold);
   font-style: italic;
+  position: relative;
+  z-index: 31 !important;
+}
+
+.tp-hero-area p,
+.tp-hero-area .tp-btn-gold,
+.tp-hero-area .card-action-btn-white {
+  position: relative;
+  z-index: 25 !important;
 }
 
 /* Video capsule pill inside headline */

@@ -47,18 +47,20 @@ export function initHeroThreeScene() {
   const mainGroup = new THREE.Group();
   scene.add(mainGroup);
 
-  // 1. High-end Sculptural Torus Knot
-  const geomKnot = new THREE.TorusKnotGeometry(1.6, 0.38, 140, 24, 2, 3);
+  // 1. High-end Sculptural Torus Knot (Refined Architectural Scale)
+  const geomKnot = new THREE.TorusKnotGeometry(1.35, 0.32, 140, 24, 2, 3);
   
   // Custom luxury metallic gold physical material
   const matKnot = new THREE.MeshPhysicalMaterial({
     color: 0xbe8c33, // Exact metallic gold
-    emissive: 0x3d2805,
-    roughness: 0.28,
+    emissive: 0x1f1402,
+    roughness: 0.26,
     metalness: 0.85,
-    clearcoat: 0.8,
-    clearcoatRoughness: 0.15,
-    wireframe: false
+    clearcoat: 0.9,
+    clearcoatRoughness: 0.12,
+    wireframe: false,
+    transparent: true,
+    opacity: 0.88
   });
   const knotMesh = new THREE.Mesh(geomKnot, matKnot);
   mainGroup.add(knotMesh);
@@ -68,11 +70,31 @@ export function initHeroThreeScene() {
     color: 0x011b39, // Deep navy wireframe lines
     wireframe: true,
     transparent: true,
-    opacity: 0.2
+    opacity: 0.16
   });
   const wireMesh = new THREE.Mesh(geomKnot, wireMat);
   wireMesh.scale.set(1.003, 1.003, 1.003);
   mainGroup.add(wireMesh);
+
+  // Responsive 3D Positioning: Positions the knot safely in the background on the right side
+  function updateGroupPosition() {
+    const currentW = parent.clientWidth || window.innerWidth;
+    if (currentW >= 1200) {
+      // Desktop: positioned on the right side, framing headline without collision
+      mainGroup.position.set(2.4, 0.15, -0.6);
+      mainGroup.scale.set(0.95, 0.95, 0.95);
+    } else if (currentW >= 768) {
+      // Tablet: pushed right and further back in Z
+      mainGroup.position.set(1.4, 0.25, -1.8);
+      mainGroup.scale.set(0.8, 0.8, 0.8);
+    } else {
+      // Mobile: centered and pushed deep into background so text in foreground is crisp
+      mainGroup.position.set(0, 0.6, -3.2);
+      mainGroup.scale.set(0.65, 0.65, 0.65);
+    }
+  }
+
+  updateGroupPosition();
 
   // 2. Floating Starfield / Particle Constellation Nodes in Gold & Navy
   const particleCount = 160;
@@ -146,5 +168,7 @@ export function initHeroThreeScene() {
 
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    updateGroupPosition();
   });
 }
