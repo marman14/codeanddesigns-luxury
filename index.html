@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="assets/css/style.css?v=8.0" />
   <link rel="stylesheet" href="assets/css/animations.css?v=8.0" />
 
+  <!-- Three.js for 3D WebGL Hero Scene -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -175,8 +177,11 @@
           </div>
         </div>
 
-        <!-- Column 2 (Right): Founder & Lead Consultant Card -->
+        <!-- Column 2 (Right): 3D Knot Mesh & Founder Card -->
         <div class="ar-hero-col-right">
+          <div class="ar-canvas-wrapper">
+            <canvas id="hero-webgl-canvas"></canvas>
+          </div>
 
           <div class="tp-hero-more-info ar-hero-floating-card">
             <div class="tp-hero-avater">

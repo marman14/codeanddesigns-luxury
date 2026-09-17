@@ -1,7 +1,17 @@
-/* ==========================================================================
-   CODE & DESIGNS - ANIMATIONS & 3D MOTION STYLESHEET
-   Custom Magnetic Cursor (Gold & Navy), Atropos 3D Tilt, Staggers
+﻿/* ==========================================================================
+   LUXURY MOTION DESIGN SYSTEM & GSAP/FRAMER-STYLE ANIMATIONS
+   Fluid 60fps scroll-triggered entrance animations, kinetic typography,
+   magnetic micro-interactions, and hardware-accelerated transitions.
    ========================================================================== */
+
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --motion-duration-sm: 0.45s;
+  --motion-duration-md: 0.85s;
+  --motion-duration-lg: 1.15s;
+}
 
 /* Custom Magnetic Cursor - Disabled per user instruction */
 .custom-cursor,
@@ -13,73 +23,226 @@
   opacity: 0 !important;
 }
 
-.cursor-project-hover .custom-cursor-follower {
-  width: 95px;
-  height: 95px;
-  background: var(--accent-gold);
-  border: none;
-}
-
-.cursor-project-hover .custom-cursor-text {
-  opacity: 1;
-}
-
-.cursor-project-hover .custom-cursor {
-  opacity: 0;
-}
-
-/* 3D Atropos Tilt Container Elements */
-.atropos {
-  position: relative;
-  display: block;
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-.atropos-scale,
-.atropos-rotate {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.atropos-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  transform-style: preserve-3d;
+/* Base Hardware Acceleration */
+.lux-motion,
+.fade-up-init,
+.tp_fade_anim,
+.lux-fade-up,
+.lux-fade-in,
+.lux-scale-up,
+.lux-slide-left,
+.lux-slide-right {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
 }
 
-/* Floating & Bouncing Micro-animations */
+/* ==========================================================================
+   1. SCROLL-TRIGGERED ENTRANCE ANIMATIONS (GSAP / FRAMER EQUIVALENT)
+   ========================================================================== */
+
+/* Fade Up (Default for headings, paragraphs, cards) */
+.lux-fade-up,
+.fade-up-init,
+.tp_fade_anim {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity var(--motion-duration-md) var(--ease-luxury),
+              transform var(--motion-duration-md) var(--ease-luxury);
+}
+
+.lux-fade-up.lux-active,
+.fade-up-init.fade-up-active,
+.tp_fade_anim.fade-up-active,
+.lux-in-view {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Soft Fade In */
+.lux-fade-in {
+  opacity: 0;
+  transition: opacity var(--motion-duration-md) var(--ease-luxury);
+}
+.lux-fade-in.lux-active {
+  opacity: 1 !important;
+}
+
+/* Scale Up (For badges, icons, cards) */
+.lux-scale-up {
+  opacity: 0;
+  transform: scale3d(0.94, 0.94, 1) translate3d(0, 20px, 0);
+  transition: opacity var(--motion-duration-md) var(--ease-luxury),
+              transform var(--motion-duration-md) var(--ease-luxury);
+}
+.lux-scale-up.lux-active {
+  opacity: 1 !important;
+  transform: scale3d(1, 1, 1) translate3d(0, 0, 0) !important;
+}
+
+/* Slide Left / Right */
+.lux-slide-left {
+  opacity: 0;
+  transform: translate3d(-35px, 0, 0);
+  transition: opacity var(--motion-duration-md) var(--ease-luxury),
+              transform var(--motion-duration-md) var(--ease-luxury);
+}
+.lux-slide-left.lux-active {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.lux-slide-right {
+  opacity: 0;
+  transform: translate3d(35px, 0, 0);
+  transition: opacity var(--motion-duration-md) var(--ease-luxury),
+              transform var(--motion-duration-md) var(--ease-luxury);
+}
+.lux-slide-right.lux-active {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Hero Entrance Sequence (Immediate smooth cascading entrance on page load) */
+.hero-anim-1 {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  animation: heroFadeUp 0.9s var(--ease-luxury) 0.1s forwards;
+}
+
+.hero-anim-2 {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  animation: heroFadeUp 0.9s var(--ease-luxury) 0.25s forwards;
+}
+
+.hero-anim-3 {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  animation: heroFadeUp 0.9s var(--ease-luxury) 0.4s forwards;
+}
+
+.hero-anim-4 {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  animation: heroFadeUp 0.9s var(--ease-luxury) 0.55s forwards;
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ==========================================================================
+   2. LUXURY MICRO-INTERACTIONS & HOVER MOTION
+   ========================================================================== */
+
+/* Gold CTA Button Magnetic Hover Lift */
+.tp-btn-gold,
+.card-action-btn-white,
+.tp-btn-navy,
+.tp-header-btn {
+  position: relative;
+  transition: transform 0.4s var(--ease-luxury),
+              box-shadow 0.4s var(--ease-luxury),
+              background-color 0.3s ease,
+              color 0.3s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.tp-btn-gold:hover {
+  transform: translate3d(0, -3px, 0) scale3d(1.015, 1.015, 1);
+  box-shadow: 0 14px 32px rgba(190, 140, 51, 0.28) !important;
+}
+
+.tp-btn-gold:active {
+  transform: translate3d(0, -1px, 0) scale3d(0.99, 0.99, 1);
+}
+
+.card-action-btn-white:hover {
+  transform: translate3d(0, -3px, 0) scale3d(1.015, 1.015, 1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--accent-gold) !important;
+}
+
+/* Arrow button icon fluid hover glide */
+.tp-btn-circle,
+.card-action-btn-white span:last-child {
+  display: inline-block;
+  transition: transform 0.35s var(--ease-luxury);
+}
+
+.tp-btn-gold:hover .tp-btn-circle {
+  transform: translate3d(4px, 0, 0);
+}
+
+.card-action-btn-white:hover span:last-child {
+  transform: translate3d(3px, -3px, 0);
+}
+
+/* Card Depth & Smooth Elevation on Hover */
+.tp-service-item,
+.tp-project-item,
+.tp-award-item,
+.pricing-card,
+.feature-box,
+.tp-hero-more-info {
+  transition: transform 0.5s var(--ease-luxury),
+              box-shadow 0.5s var(--ease-luxury),
+              border-color 0.4s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.tp-service-item:hover,
+.pricing-card:hover {
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 20px 40px rgba(1, 27, 57, 0.08) !important;
+  border-color: rgba(190, 140, 51, 0.35) !important;
+}
+
+.tp-award-item:hover {
+  transform: translate3d(8px, 0, 0);
+}
+
+/* Subtle Floating Bob Animation */
 @keyframes floatSlow {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-16px) rotate(3deg);
+    transform: translate3d(0, -10px, 0);
   }
 }
 
 .tp-bounce {
-  animation: floatSlow 6s ease-in-out infinite;
+  animation: floatSlow 5s ease-in-out infinite;
 }
 
-/* Stagger Fade Up Animation Utility */
-.fade-up-init {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Link Underline Fluid Expand Effect */
+.about-link,
+.tp-nav-menu a {
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.fade-up-active {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Stagger Children Delay Utility */
+.lux-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.lux-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.lux-stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.lux-stagger > *:nth-child(4) { transition-delay: 0.26s; }
+.lux-stagger > *:nth-child(5) { transition-delay: 0.33s; }
+.lux-stagger > *:nth-child(6) { transition-delay: 0.40s; }
+.lux-stagger > *:nth-child(7) { transition-delay: 0.47s; }
+.lux-stagger > *:nth-child(8) { transition-delay: 0.54s; }
 
-/* WebGL Displacement Canvas Layer */
+/* 3D Displacement Hover on project images */
 .displacement-canvas {
   position: absolute;
   top: 0;
@@ -94,4 +257,24 @@
 
 .tp-project-item:hover .displacement-canvas {
   opacity: 1;
+}
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .lux-fade-up,
+  .fade-up-init,
+  .tp_fade_anim,
+  .lux-fade-in,
+  .lux-scale-up,
+  .lux-slide-left,
+  .lux-slide-right,
+  .hero-anim-1,
+  .hero-anim-2,
+  .hero-anim-3,
+  .hero-anim-4 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
