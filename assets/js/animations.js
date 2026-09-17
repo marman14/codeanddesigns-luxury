@@ -426,6 +426,26 @@ export function initScrollAnimations() {
     });
   }
 
+  // 3b. Interactive 3D Card Hover Tilts & Dynamic Physics
+  const interactiveCards = document.querySelectorAll(
+    '.tp-service-item, .tp-testimonial-card, .tp-pillar-card, .pricing-card, .ar-solo-portrait-card, .case-study-card'
+  );
+  interactiveCards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4.5;
+      const rotateY = ((x - centerX) / centerX) * 4.5;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
   // 4. Smooth Anchor Scrolling for all navigation links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
