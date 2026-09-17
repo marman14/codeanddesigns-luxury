@@ -4,14 +4,8 @@
    ========================================================================== */
 
 export function initCustomCursor() {
-  // Only initialize on devices with fine pointer (mouse)
-  if (!window.matchMedia('(pointer: fine)').matches) return;
-
-  const cursor = document.createElement('div');
-  cursor.className = 'custom-cursor';
-
-  const follower = document.createElement('div');
-  follower.className = 'custom-cursor-follower';
+  // Disabled per user instruction: eliminate stray floating gold circles and pointer artifacts
+  return;
 
   const cursorText = document.createElement('span');
   cursorText.className = 'custom-cursor-text';

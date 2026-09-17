@@ -3,10 +3,10 @@
    Integrates all modules, menu toggles, tabs, interactive forms
    ========================================================================== */
 
-import { initCustomCursor } from './cursor.js?v=7.0';
-import { initHeroThreeScene } from './three-scene.js?v=7.0';
-import { initProjectHoverDisplacement } from './hover-displacement.js?v=7.0';
-import { initScrollAnimations } from './animations.js?v=7.0';
+import { initCustomCursor } from './cursor.js?v=8.0';
+import { initHeroThreeScene } from './three-scene.js?v=8.0';
+import { initProjectHoverDisplacement } from './hover-displacement.js?v=8.0';
+import { initScrollAnimations } from './animations.js?v=8.0';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Core Interactive Systems

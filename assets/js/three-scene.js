@@ -91,33 +91,6 @@ export function initHeroThreeScene() {
 
   updateGroupPosition();
 
-  // 2. Floating Starfield / Particle Constellation Nodes in Gold & Navy (Clustered tightly around knot)
-  const particleCount = 80;
-  const particleGeom = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    const radius = 1.3 + Math.random() * 0.9;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = (Math.random() - 0.5) * Math.PI;
-
-    positions[i] = radius * Math.cos(phi) * Math.cos(theta);
-    positions[i + 1] = radius * Math.sin(phi) * 0.85;
-    positions[i + 2] = radius * Math.cos(phi) * Math.sin(theta);
-  }
-
-  particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-  const particleMat = new THREE.PointsMaterial({
-    color: 0xbe8c33,
-    size: 0.07,
-    transparent: true,
-    opacity: 0.65
-  });
-
-  const particleSystem = new THREE.Points(particleGeom, particleMat);
-  scene.add(particleSystem);
-
   // Mouse Interaction coordinates
   let mouseX = 0;
   let mouseY = 0;
@@ -143,10 +116,6 @@ export function initHeroThreeScene() {
     // Organic continuous rotation + mouse reaction
     mainGroup.rotation.x = elapsedTime * 0.22 + targetY * 0.45;
     mainGroup.rotation.y = elapsedTime * 0.35 + targetX * 0.55;
-
-    // Floating subtle particle movement
-    particleSystem.rotation.y = elapsedTime * 0.04;
-    particleSystem.rotation.x = elapsedTime * 0.02;
 
     // Dynamically orbit point light with mouse
     pointLightGold.position.x = Math.sin(elapsedTime * 0.7) * 4 + targetX * 2;

@@ -590,12 +590,43 @@ button {
   overflow: hidden;
 }
 
-/* ==================== 1. HERO 2-COLUMN GRID ==================== */
+/* ==========================================================================
+   1. KILL STRAY PARTICLES, CIRCLES & FLOATING SHAPES
+   ========================================================================== */
+.custom-cursor,
+.custom-cursor-follower,
+.custom-cursor-text,
+.tp-hero-shape,
+.tp-hero-shape-1,
+.tp-hero-shape-2,
+.tp-hero-shape-3,
+.tp-hero-shape-4,
+.hero-particle,
+.hero-particles,
+.hero-shape,
+.hero-circle,
+.ar-floating-circle,
+.tp-hero-area svg[class*="shape"],
+.tp-hero-area svg[class*="circle"],
+.tp-hero-area div[class*="particle"],
+.tp-hero-area div[class*="shape"],
+.tp-hero-area div[class*="circle"]:not(.tp-hero-avater):not(.tp-btn-circle),
+[class*="particle"]:not(#hero-webgl-canvas) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
+/* ==========================================================================
+   2. STRICT HERO CONTAINER BOUNDARIES (2-COLUMN GRID)
+   ========================================================================== */
 .ar-hero-grid {
   display: grid !important;
-  grid-template-columns: 1.15fr 0.85fr !important;
+  grid-template-columns: 1fr 1fr !important;
   align-items: center !important;
   gap: 40px !important;
+  overflow: hidden !important;
   width: 100% !important;
   position: relative !important;
   z-index: 10 !important;
@@ -608,11 +639,10 @@ button {
   }
 }
 
-/* ==================== 3. TEXT SEPARATION (LEFT COLUMN) ==================== */
-/* Column 1 (Left): Text, Headings, Subtext, Buttons */
+/* Left Column: Contains all text and CTA buttons */
 .ar-hero-col-left {
   position: relative !important;
-  z-index: 20 !important;
+  z-index: 10 !important;
   pointer-events: auto !important;
 }
 
@@ -623,12 +653,11 @@ button {
 .ar-hero-col-left .card-action-btn-white,
 .ar-hero-col-left div {
   position: relative !important;
-  z-index: 20 !important;
+  z-index: 10 !important;
   pointer-events: auto !important;
 }
 
-/* ==================== 1 & 2. CANVAS ISOLATION CONTAINER & BLEED PREVENTION ==================== */
-/* Column 2 (Right): 3D WebGL Canvas Container & Consultant Card */
+/* Right Column: Contains ONLY the 3D knot canvas and the founder card stacked vertically */
 .ar-hero-col-right,
 .ar-hero-visual {
   display: flex !important;
@@ -638,6 +667,7 @@ button {
   position: relative !important;
   z-index: 5 !important;
   pointer-events: auto !important;
+  overflow: hidden !important;
   width: 100% !important;
 }
 
@@ -647,7 +677,7 @@ button {
 .ar-hero-visual div[class*="canvas"] {
   width: 100% !important;
   max-width: 500px !important;
-  height: 450px !important;
+  height: 420px !important;
   position: relative !important;
   overflow: hidden !important;
   pointer-events: auto !important;
@@ -676,7 +706,7 @@ button {
 .ar-hero-floating-card,
 .tp-hero-more-info {
   position: relative !important;
-  z-index: 20 !important;
+  z-index: 10 !important;
   margin-top: 5px !important;
   background: #ffffff !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
