@@ -2100,7 +2100,27 @@ button {
   justify-content: center;
   color: var(--accent-gold);
   flex-shrink: 0;
-  font-size: 1.2rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-info-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent-gold);
+  display: block;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-info-item:hover .contact-info-icon {
+  background: var(--bg-btn-gold);
+  border-color: var(--bg-btn-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(190, 140, 51, 0.35);
+}
+
+.contact-info-item:hover .contact-info-icon svg {
+  stroke: #ffffff;
+  transform: scale(1.08);
 }
 
 .contact-info-content span {
