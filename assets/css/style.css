@@ -586,33 +586,37 @@ button {
   overflow: hidden;
 }
 
+/* 1. Isolate the 3D canvas container with exact rules */
+.hero-3d-bg,
 #hero-webgl-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0 !important;
-  pointer-events: none;
-  opacity: 0.88;
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  opacity: 0.82;
 }
 
+/* 2. Parent hero content wrapper in foreground with exact rules */
 .hero-content-layer {
-  position: relative;
-  z-index: 20 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
   width: 100%;
-  pointer-events: auto;
 }
 
 .tp-hero-title-box {
-  position: relative;
-  z-index: 25 !important;
+  position: relative !important;
+  z-index: 10 !important;
   margin-bottom: 30px;
 }
 
 .tp-hero-title {
-  position: relative;
-  z-index: 30 !important;
+  position: relative !important;
+  z-index: 10 !important;
   font-size: clamp(3.8rem, 9.5vw, 10.5rem);
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -621,22 +625,23 @@ button {
 
 .tp-hero-title span {
   display: inline-block;
-  position: relative;
-  z-index: 31 !important;
+  position: relative !important;
+  z-index: 10 !important;
 }
 
 .tp-hero-title span.accent-italic {
   color: var(--accent-gold);
   font-style: italic;
-  position: relative;
-  z-index: 31 !important;
+  position: relative !important;
+  z-index: 10 !important;
 }
 
 .tp-hero-area p,
 .tp-hero-area .tp-btn-gold,
 .tp-hero-area .card-action-btn-white {
-  position: relative;
-  z-index: 25 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
 }
 
 /* Video capsule pill inside headline */

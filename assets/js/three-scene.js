@@ -48,19 +48,19 @@ export function initHeroThreeScene() {
   scene.add(mainGroup);
 
   // 1. High-end Sculptural Torus Knot (Refined Architectural Scale)
-  const geomKnot = new THREE.TorusKnotGeometry(1.35, 0.32, 140, 24, 2, 3);
+  const geomKnot = new THREE.TorusKnotGeometry(1.2, 0.28, 140, 24, 2, 3);
   
-  // Custom luxury metallic gold physical material
+  // Custom luxury metallic gold physical material with ambient background transparency
   const matKnot = new THREE.MeshPhysicalMaterial({
     color: 0xbe8c33, // Exact metallic gold
-    emissive: 0x1f1402,
-    roughness: 0.26,
+    emissive: 0x1a1002,
+    roughness: 0.28,
     metalness: 0.85,
     clearcoat: 0.9,
     clearcoatRoughness: 0.12,
     wireframe: false,
     transparent: true,
-    opacity: 0.88
+    opacity: 0.75
   });
   const knotMesh = new THREE.Mesh(geomKnot, matKnot);
   mainGroup.add(knotMesh);
@@ -70,27 +70,31 @@ export function initHeroThreeScene() {
     color: 0x011b39, // Deep navy wireframe lines
     wireframe: true,
     transparent: true,
-    opacity: 0.16
+    opacity: 0.12
   });
   const wireMesh = new THREE.Mesh(geomKnot, wireMat);
   wireMesh.scale.set(1.003, 1.003, 1.003);
   mainGroup.add(wireMesh);
 
-  // Responsive 3D Positioning: Positions the knot safely in the background on the right side
+  // Responsive 3D Positioning: Positions the knot strictly in the background on the right side
   function updateGroupPosition() {
     const currentW = parent.clientWidth || window.innerWidth;
-    if (currentW >= 1200) {
-      // Desktop: positioned on the right side, framing headline without collision
-      mainGroup.position.set(2.4, 0.15, -0.6);
-      mainGroup.scale.set(0.95, 0.95, 0.95);
+    if (currentW >= 1400) {
+      // Large screens: safely positioned on the right
+      mainGroup.position.set(3.4, 0.1, -1.0);
+      mainGroup.scale.set(0.85, 0.85, 0.85);
+    } else if (currentW >= 1100) {
+      // Standard laptops / medium screens: shifted further right and deeper into background
+      mainGroup.position.set(2.8, 0.2, -1.8);
+      mainGroup.scale.set(0.75, 0.75, 0.75);
     } else if (currentW >= 768) {
-      // Tablet: pushed right and further back in Z
-      mainGroup.position.set(1.4, 0.25, -1.8);
-      mainGroup.scale.set(0.8, 0.8, 0.8);
-    } else {
-      // Mobile: centered and pushed deep into background so text in foreground is crisp
-      mainGroup.position.set(0, 0.6, -3.2);
+      // Tablet: pushed right and deep into background
+      mainGroup.position.set(2.0, 0.3, -2.6);
       mainGroup.scale.set(0.65, 0.65, 0.65);
+    } else {
+      // Mobile: centered and pushed deep into background
+      mainGroup.position.set(0, 0.6, -4.0);
+      mainGroup.scale.set(0.5, 0.5, 0.5);
     }
   }
 
