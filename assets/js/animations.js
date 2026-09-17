@@ -1,7 +1,7 @@
-﻿/* ==========================================================================
-   CODE & DESIGNS - LUXURY MOTION DESIGN & GSAP/FRAMER ANIMATION ENGINE
-   Scroll-triggered entrance fades, staggered kinetic typography, 
-   smooth counters, sticky header transitions, and 60fps micro-interactions.
+/* ==========================================================================
+   CODE & DESIGNS - LUXURY MOTION DESIGN & GSAP / SCROLLTRIGGER ANIMATION ENGINE
+   Fluid 60fps scroll-triggered entrance animations, kinetic typography reveals,
+   smooth counters, and hardware-accelerated transitions.
    ========================================================================== */
 
 export function initScrollAnimations() {
@@ -34,45 +34,179 @@ export function initScrollAnimations() {
     updateHeader();
   }
 
-  // 2. High-Performance Animated PureCounter Numbers
-  const counters = document.querySelectorAll('.purecounter');
-  if (counters.length) {
-    const counterObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
-            if (isNaN(target)) return;
+  // 2. High-End GSAP & ScrollTrigger Animations Engine
+  const hasGSAP = typeof gsap !== 'undefined';
+  const hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
 
-            const duration = 1800; // ms
-            const startTime = performance.now();
+  if (hasGSAP && hasScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
 
-            const animateCounter = (currentTime) => {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              // easeOutExpo for ultra-luxury deceleration
-              const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-              const currentVal = Math.round(target * easeProgress);
+    // A. Hero Section Master Entrance Timeline
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-              el.textContent = currentVal;
+    if (document.querySelector('.tp-hero-badge')) {
+      heroTl.from('.tp-hero-badge', { y: -20, opacity: 0, duration: 0.7, delay: 0.1 });
+    }
 
-              if (progress < 1) {
-                requestAnimationFrame(animateCounter);
-              } else {
-                el.textContent = target;
-              }
-            };
+    if (document.querySelector('.tp-hero-title')) {
+      heroTl.from('.tp-hero-title', { y: 40, opacity: 0, duration: 0.95, ease: 'power4.out' }, '-=0.4');
+    }
 
-            requestAnimationFrame(animateCounter);
-            observer.unobserve(el);
-          }
+    if (document.querySelector('.ar-hero-col-left p')) {
+      heroTl.from('.ar-hero-col-left p', { y: 30, opacity: 0, duration: 0.8 }, '-=0.5');
+    }
+
+    if (document.querySelector('.tp-hero-buttons')) {
+      heroTl.from('.tp-hero-buttons', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5');
+    }
+
+    if (document.querySelector('.ar-canvas-wrapper')) {
+      heroTl.from('.ar-canvas-wrapper', { scale: 0.88, opacity: 0, duration: 1.1, ease: 'power2.out' }, '-=0.8');
+    }
+
+    if (document.querySelector('.ar-hero-floating-card')) {
+      heroTl.from('.ar-hero-floating-card', { y: 35, opacity: 0, duration: 0.9 }, '-=0.7');
+    }
+
+    // B. Global Section Header ScrollTriggers
+    const sectionHeaders = document.querySelectorAll('.tp-section-subtitle, .tp-section-title, .tp-section-title-large, .tp-section-title-wrapper');
+    sectionHeaders.forEach((headerEl) => {
+      gsap.from(headerEl, {
+        scrollTrigger: {
+          trigger: headerEl,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        },
+        y: 35,
+        opacity: 0,
+        duration: 0.85,
+        ease: 'power3.out'
+      });
+    });
+
+    // C. Service Cards Staggered Reveal
+    const serviceItems = document.querySelectorAll('.tp-service-item');
+    serviceItems.forEach((item, idx) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 45,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out'
+      });
+    });
+
+    // D. Testimonials Grid Staggered Reveal
+    const testimonialGrids = document.querySelectorAll('.tp-testimonial-grid-8, .tp-testimonial-grid');
+    testimonialGrids.forEach((grid) => {
+      const cards = grid.querySelectorAll('.tp-testimonial-card');
+      if (cards.length) {
+        gsap.from(cards, {
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: 'power3.out'
         });
-      },
-      { threshold: 0.2 }
-    );
+      }
+    });
 
-    counters.forEach((counter) => counterObserver.observe(counter));
+    // E. Team Cards Reveal (About Us Page)
+    const teamCards = document.querySelectorAll('.tp-about-section .tp-testimonial-card, .tp-about-grid');
+    if (teamCards.length) {
+      gsap.from(teamCards, {
+        scrollTrigger: {
+          trigger: teamCards[0],
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.85,
+        stagger: 0.12,
+        ease: 'power3.out'
+      });
+    }
+
+    // F. Featured Spotlight Case Studies
+    const caseCards = document.querySelectorAll('.tp-featured-case-section, .tp-case-study-hero, .case-study-card');
+    caseCards.forEach((c) => {
+      gsap.from(c, {
+        scrollTrigger: {
+          trigger: c,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.0,
+        ease: 'power3.out'
+      });
+    });
+
+    // G. PureCounter Animation with GSAP ScrollTrigger
+    const counters = document.querySelectorAll('.purecounter');
+    counters.forEach((counter) => {
+      const target = parseInt(counter.getAttribute('data-target') || counter.textContent, 10);
+      if (isNaN(target)) return;
+
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: target,
+        duration: 1.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: counter,
+          start: 'top 90%',
+          toggleActions: 'play none none none'
+        },
+        onUpdate: () => {
+          counter.textContent = Math.round(obj.val);
+        }
+      });
+    });
+
+  } else {
+    // High-performance IntersectionObserver Fallback
+    const fallbackElements = document.querySelectorAll('.tp-service-item, .tp-testimonial-card, .tp-section-title, .tp-section-title-large, .tp-hero-more-info, .purecounter');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lux-active', 'fade-up-active');
+          if (entry.target.classList.contains('purecounter')) {
+            const target = parseInt(entry.target.getAttribute('data-target') || entry.target.textContent, 10);
+            if (!isNaN(target)) {
+              let cur = 0;
+              const step = Math.ceil(target / 40);
+              const timer = setInterval(() => {
+                cur += step;
+                if (cur >= target) {
+                  entry.target.textContent = target;
+                  clearInterval(timer);
+                } else {
+                  entry.target.textContent = cur;
+                }
+              }, 30);
+            }
+          }
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fallbackElements.forEach((el) => {
+      el.classList.add('lux-fade-up');
+      observer.observe(el);
+    });
   }
 
   // 3. Hover-Reveal Recent Projects Floating Preview
@@ -124,89 +258,17 @@ export function initScrollAnimations() {
     });
   }
 
-  // 4. GSAP/Framer-Grade Scroll-Triggered Entrance Animations
-  // Automatically discovers headings, paragraphs, buttons, cards, and sections across all pages
-  const animSelectors = [
-    '.tp-hero-title-box',
-    '.tp-hero-title',
-    '.tp-section-title',
-    '.tp-section-subtitle',
-    '.tp-section-title-wrapper',
-    '.tp-section-description',
-    'h1:not(.tp-hero-title)',
-    'h2',
-    'h3',
-    'h4',
-    '.ar-hero-col-left p',
-    '.tp-about-content p',
-    '.tp-service-desc',
-    '.tp-service-item',
-    '.tp-project-item',
-    '.tp-award-item',
-    '.pricing-card',
-    '.feature-box',
-    '.tp-hero-more-info',
-    '.tp-btn-gold',
-    '.card-action-btn-white',
-    '.tp-btn-navy',
-    '.tp_fade_anim',
-    '.fade-up-init'
-  ];
-
-  const targetElements = document.querySelectorAll(animSelectors.join(', '));
-
-  if (targetElements.length) {
-    // Group elements by parent container to calculate staggered delays
-    const parentMap = new Map();
-
-    targetElements.forEach((el) => {
-      // Don't override already custom animated elements
-      if (!el.classList.contains('lux-fade-up') && !el.classList.contains('fade-up-init') && !el.classList.contains('tp_fade_anim')) {
-        el.classList.add('lux-fade-up');
-      }
-
-      const parent = el.parentElement;
-      if (!parentMap.has(parent)) {
-        parentMap.set(parent, []);
-      }
-      parentMap.get(parent).push(el);
-    });
-
-    // Apply sequential stagger delay to siblings
-    parentMap.forEach((children) => {
-      children.forEach((child, index) => {
-        const staggerDelay = Math.min(index * 0.08, 0.4);
-        child.style.transitionDelay = `${staggerDelay}s`;
-      });
-    });
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.08
-    };
-
-    const entranceObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          el.classList.add('lux-active', 'fade-up-active', 'lux-in-view');
-          observer.unobserve(el);
+  // 4. Smooth Anchor Scrolling for all navigation links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      });
-    }, observerOptions);
-
-    targetElements.forEach((el) => {
-      // Check if element is already in initial viewport on page load
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        // Immediate smooth entrance for above-the-fold content
-        requestAnimationFrame(() => {
-          el.classList.add('lux-active', 'fade-up-active', 'lux-in-view');
-        });
-      } else {
-        entranceObserver.observe(el);
       }
     });
-  }
+  });
 }

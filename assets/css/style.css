@@ -656,22 +656,50 @@ button {
   pointer-events: auto !important;
 }
 
-/* Right Column: Clean Whitespace Area with Founder Card */
+/* Right Column: 3D Knot Mesh & Founder Card */
 .ar-hero-col-right {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: center !important;
   justify-content: center !important;
+  gap: 20px !important;
   position: relative !important;
   z-index: 5 !important;
   pointer-events: auto !important;
   width: 100% !important;
 }
 
+.ar-canvas-wrapper {
+  width: 100% !important;
+  max-width: 480px !important;
+  height: 380px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  pointer-events: auto !important;
+  z-index: 5 !important;
+  border-radius: var(--radius-md);
+  background: transparent;
+  margin: 0 auto;
+}
+
+#hero-webgl-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  z-index: 1 !important;
+}
+
 @media (max-width: 991px) {
   .ar-hero-col-right {
-    align-items: flex-start !important;
-    margin-top: 10px !important;
+    align-items: center !important;
+  }
+  .ar-canvas-wrapper {
+    height: 300px !important;
+    max-width: 100% !important;
   }
 }
 
