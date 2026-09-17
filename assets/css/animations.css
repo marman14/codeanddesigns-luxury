@@ -218,37 +218,69 @@ html {
    PERPETUAL LUXURY MOTION: CONTINUOUS FLOATING, GLOWING & BREATHING LOOPS
    ========================================================================== */
 @keyframes luxFloat {
-  0% {
+  0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
     transform: translateY(-8px) rotate(0.35deg);
   }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
 }
 
 @keyframes luxFloatReverse {
-  0% {
+  0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
     transform: translateY(7px) rotate(-0.35deg);
   }
-  100% {
-    transform: translateY(0px) rotate(0deg);
+}
+
+@keyframes luxCardFloatA {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes luxCardFloatB {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes luxCardFloatC {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
   }
 }
 
 @keyframes luxPulseGlow {
   0%, 100% {
-    box-shadow: 0 10px 30px rgba(1, 27, 57, 0.08), 0 0 20px rgba(190, 140, 51, 0.15);
-    border-color: rgba(190, 140, 51, 0.35);
+    box-shadow: 0 10px 30px rgba(1, 27, 57, 0.08), 0 0 16px rgba(190, 140, 51, 0.12);
+    border-color: rgba(190, 140, 51, 0.3);
   }
   50% {
-    box-shadow: 0 20px 50px rgba(1, 27, 57, 0.15), 0 0 42px rgba(190, 140, 51, 0.4);
-    border-color: rgba(190, 140, 51, 0.7);
+    box-shadow: 0 18px 45px rgba(1, 27, 57, 0.14), 0 0 32px rgba(190, 140, 51, 0.35);
+    border-color: rgba(190, 140, 51, 0.65);
+  }
+}
+
+@keyframes luxSpotlightGlow {
+  0%, 100% {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 16px rgba(190, 140, 51, 0.15);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  50% {
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.45), 0 0 35px rgba(190, 140, 51, 0.35);
+    border-color: rgba(190, 140, 51, 0.45);
   }
 }
 
@@ -258,9 +290,127 @@ html {
     filter: drop-shadow(0 0 2px rgba(190, 140, 51, 0.2));
   }
   50% {
-    transform: scale(1.07);
+    transform: scale(1.08);
     filter: drop-shadow(0 0 8px rgba(190, 140, 51, 0.55));
   }
+}
+
+@keyframes luxBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(190, 140, 51, 0.15);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 0 16px rgba(190, 140, 51, 0.38);
+  }
+}
+
+@keyframes luxShimmer {
+  0%, 100% {
+    opacity: 0.92;
+    filter: drop-shadow(0 0 0 rgba(190, 140, 51, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(190, 140, 51, 0.45));
+  }
+}
+
+@keyframes luxButtonGlow {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(190, 140, 51, 0.22);
+  }
+  50% {
+    box-shadow: 0 6px 24px rgba(190, 140, 51, 0.52);
+  }
+}
+
+/* Apply Continuous Floating & Breathing to Cards across the entire site */
+.tp-service-item:nth-child(3n+1) {
+  animation: luxCardFloatA 6.5s ease-in-out infinite, luxPulseGlow 6s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.tp-service-item:nth-child(3n+2) {
+  animation: luxCardFloatB 7.5s ease-in-out infinite 0.6s, luxPulseGlow 6.5s ease-in-out infinite 0.6s;
+  will-change: transform, box-shadow;
+}
+
+.tp-service-item:nth-child(3n) {
+  animation: luxCardFloatC 7s ease-in-out infinite 1.2s, luxPulseGlow 7s ease-in-out infinite 1.2s;
+  will-change: transform, box-shadow;
+}
+
+.tp-testimonial-card:nth-child(even) {
+  animation: luxCardFloatA 7.2s ease-in-out infinite, luxPulseGlow 6.8s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.tp-testimonial-card:nth-child(odd) {
+  animation: luxCardFloatB 8s ease-in-out infinite 0.8s, luxPulseGlow 7.2s ease-in-out infinite 0.8s;
+  will-change: transform, box-shadow;
+}
+
+.tp-pillar-card {
+  animation: luxCardFloatB 7.5s ease-in-out infinite, luxPulseGlow 7s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.tp-process-card {
+  animation: luxCardFloatC 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.case-study-spotlight-card {
+  animation: luxSpotlightGlow 6s ease-in-out infinite;
+  will-change: box-shadow, border-color;
+}
+
+.pricing-card {
+  animation: luxCardFloatA 7.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.pricing-card.featured {
+  animation: luxCardFloatB 6.8s ease-in-out infinite, luxPulseGlow 5.5s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.tp-contact-info-card {
+  animation: luxPulseGlow 6.5s ease-in-out infinite;
+}
+
+/* Pause perpetual floating during user hover for crisp interactive 3D response */
+.tp-service-item:hover,
+.tp-testimonial-card:hover,
+.tp-pillar-card:hover,
+.pricing-card:hover,
+.tp-process-card:hover {
+  animation-play-state: paused;
+}
+
+/* Continuous Icon Breathing across all sections */
+.contact-info-icon svg,
+.tp-service-icon svg,
+.ar-badge-icon,
+.tp-pillar-icon svg,
+.tp-btn-gold .tp-btn-circle {
+  animation: luxIconBreathe 3.8s ease-in-out infinite;
+  display: inline-block;
+  will-change: transform, filter;
+}
+
+/* Continuous Badge & Accent Shimmer */
+.case-badge,
+.tp-section-subtitle,
+.tp-hero-badge-pill {
+  animation: luxBadgePulse 5s ease-in-out infinite;
+  display: inline-flex;
+}
+
+.tp-btn-gold {
+  animation: luxButtonGlow 4s ease-in-out infinite;
 }
 
 /* Apply Perpetual Floating to Founder Card & Solo Portrait */

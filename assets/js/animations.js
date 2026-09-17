@@ -75,7 +75,10 @@ export function initScrollAnimations() {
         duration: duration,
         delay: delay,
         ease: ease,
-        clearProps: 'all'
+        clearProps: 'all',
+        onComplete: () => {
+          el.classList.add('lux-live-active');
+        }
       };
 
       if (isAboveFold) {
@@ -119,7 +122,10 @@ export function initScrollAnimations() {
         duration: duration,
         stagger: stagger,
         ease: ease,
-        clearProps: 'all'
+        clearProps: 'all',
+        onComplete: () => {
+          children.forEach((c) => c.classList.add('lux-live-active'));
+        }
       };
 
       if (isAboveFold) {

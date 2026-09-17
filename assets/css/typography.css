@@ -52,22 +52,60 @@ blockquote, cite, code, pre,
 body {
   font-family: var(--font-serif-body) !important;
   font-size: 1.15rem;
-  line-height: 1.6;
+  line-height: 1.68;
   letter-spacing: 0.01em;
 }
 
-h1, h2, h3, h4, h5, h6,
-.hero-title,
-.section-title {
+h1, .hero-title, .tp-hero-title {
   font-family: var(--font-serif-editorial) !important;
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.18 !important;
+  margin-bottom: 24px !important;
+}
+
+h2, .section-title, .tp-section-title, .tp-section-title-large {
+  font-family: var(--font-serif-editorial) !important;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25 !important;
+  margin-bottom: 24px !important;
+}
+
+h3 {
+  font-family: var(--font-serif-editorial) !important;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.32 !important;
+  margin-bottom: 18px !important;
+}
+
+h4 {
+  font-family: var(--font-serif-editorial) !important;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.36 !important;
+  margin-bottom: 16px !important;
+}
+
+h5, h6 {
+  font-family: var(--font-serif-editorial) !important;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.38 !important;
+  margin-bottom: 14px !important;
+}
+
+p {
+  line-height: 1.7 !important;
+  margin-bottom: 18px !important;
 }
 
 .text-editorial-accent {
   color: #b4532a; /* Warm editorial cognac/burnt amber accent matching the reference image "safe hands." */
   font-style: italic;
+  display: inline-block;
+  animation: luxShimmer 6s ease-in-out infinite;
 }
 
 button,
