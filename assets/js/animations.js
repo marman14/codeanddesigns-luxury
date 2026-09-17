@@ -60,10 +60,6 @@ export function initScrollAnimations() {
       heroTl.from('.tp-hero-buttons', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5');
     }
 
-    if (document.querySelector('.ar-canvas-wrapper')) {
-      heroTl.from('.ar-canvas-wrapper', { scale: 0.88, opacity: 0, duration: 1.1, ease: 'power2.out' }, '-=0.8');
-    }
-
     if (document.querySelector('.ar-hero-floating-card')) {
       heroTl.from('.ar-hero-floating-card', { y: 35, opacity: 0, duration: 0.9 }, '-=0.7');
     }
