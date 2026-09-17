@@ -9,7 +9,7 @@
   
   <!-- Strict Luxury Editorial Typography & Master Stylesheets -->
   <link rel="stylesheet" href="assets/css/typography.css" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.0" />
+  <link rel="stylesheet" href="assets/css/style.css?v=5.0" />
   <link rel="stylesheet" href="assets/css/animations.css" />
 
   <!-- Three.js for 3D WebGL Hero Scene -->
@@ -38,7 +38,7 @@
         <nav class="d-none d-xl-block">
           <ul class="tp-nav-menu">
             <li class="active"><a href="./">Home</a></li>
-            <li class="has-dropdown">
+            <li class="has-dropdown ar-dropdown-parent">
               <a href="./services/">Services <span style="font-size: 0.8em; margin-left: 2px;">▾</span></a>
               <div class="ar-megamenu tp-megamenu" style="display: none;">
                 <a href="./wordpress-plugin-development/" class="ar-megamenu-item tp-megamenu-item">
@@ -148,26 +148,21 @@
   </div>
   <div class="body-overlay"></div>
 
-  <!-- ==================== HERO SECTION WITH THREE.JS 3D WEBGL ==================== -->
-  <section class="tp-hero-area" style="position: relative; overflow: hidden;">
-    <!-- 1. 3D WebGL Canvas Container Isolated in Background -->
-    <div class="hero-3d-bg" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden;">
-      <canvas id="hero-webgl-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
-    </div>
-
-    <!-- 2. Parent Hero Content Wrapper in Foreground -->
-    <div class="container-1750 hero-content-layer" style="position: relative; z-index: 10; pointer-events: auto;">
-      <div class="tp-hero-title-box" style="position: relative; z-index: 10;">
-        <h1 class="tp-hero-title" style="position: relative; z-index: 10;">
-          Custom <br />
-          <span class="accent-italic">WordPress &amp; LMS</span> <br />
-          Engineering.
-        </h1>
-      </div>
-
-      <div class="row align-items-end" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
-        <div style="max-width: 680px;">
-          <p style="font-size: 1.45rem; line-height: 1.5; color: var(--text-navy); margin-bottom: 24px;">
+  <!-- ==================== HERO SECTION (2-COLUMN GRID WITH ISOLATED 3D CANVAS) ==================== -->
+  <section class="tp-hero-area">
+    <div class="container-1750">
+      <div class="ar-hero-grid">
+        
+        <!-- Column 1 (Left): Headings, Subtext & CTA Buttons -->
+        <div class="ar-hero-col-left">
+          <div class="tp-hero-title-box">
+            <h1 class="tp-hero-title">
+              Custom <br />
+              <span class="accent-italic">WordPress &amp; LMS</span> <br />
+              Engineering.
+            </h1>
+          </div>
+          <p style="font-size: 1.45rem; line-height: 1.55; color: var(--text-navy); margin-bottom: 28px; max-width: 650px;">
             AR Webcrafts LLC engineers custom WordPress plugins, bespoke WooCommerce checkout logic, LearnDash solutions, and enterprise API integrations for high-growth businesses ($250K–$5M revenue).
           </p>
           <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
@@ -182,7 +177,12 @@
           </div>
         </div>
 
-        <div style="min-width: 300px;">
+        <!-- Column 2 (Right): 3D WebGL Canvas Wrapper & Consultant Card -->
+        <div class="ar-hero-col-right">
+          <div class="ar-canvas-wrapper">
+            <canvas id="hero-webgl-canvas"></canvas>
+          </div>
+
           <div class="tp-hero-more-info">
             <div class="tp-hero-avater">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" alt="Arman - Founder" />
@@ -197,6 +197,7 @@
             <a href="./about-us/" class="about-link">Meet AR Webcrafts →</a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -879,6 +880,6 @@
     </div>
   </footer>
 
-  <script type="module" src="assets/js/main.js?v=4.0"></script>
+  <script type="module" src="assets/js/main.js?v=5.0"></script>
 </body>
 </html>

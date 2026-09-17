@@ -16,8 +16,8 @@ export function initHeroThreeScene() {
   const scene = new THREE.Scene();
 
   // Camera setup
-  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-  camera.position.z = 7;
+  const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 1000);
+  camera.position.z = 5.8;
 
   // Renderer setup
   const renderer = new THREE.WebGLRenderer({
@@ -76,39 +76,30 @@ export function initHeroThreeScene() {
   wireMesh.scale.set(1.003, 1.003, 1.003);
   mainGroup.add(wireMesh);
 
-  // Responsive 3D Positioning: Positions the knot strictly in the background on the right side
+  // Responsive 3D Positioning: Centered strictly inside Column 2 canvas container
   function updateGroupPosition() {
-    const currentW = parent.clientWidth || window.innerWidth;
-    if (currentW >= 1400) {
-      // Large screens: safely positioned on the right
-      mainGroup.position.set(3.4, 0.1, -1.0);
+    mainGroup.position.set(0, 0, 0);
+    const currentW = parent.clientWidth || 500;
+    if (currentW >= 550) {
+      mainGroup.scale.set(1.0, 1.0, 1.0);
+    } else if (currentW >= 400) {
       mainGroup.scale.set(0.85, 0.85, 0.85);
-    } else if (currentW >= 1100) {
-      // Standard laptops / medium screens: shifted further right and deeper into background
-      mainGroup.position.set(2.8, 0.2, -1.8);
-      mainGroup.scale.set(0.75, 0.75, 0.75);
-    } else if (currentW >= 768) {
-      // Tablet: pushed right and deep into background
-      mainGroup.position.set(2.0, 0.3, -2.6);
-      mainGroup.scale.set(0.65, 0.65, 0.65);
     } else {
-      // Mobile: centered and pushed deep into background
-      mainGroup.position.set(0, 0.6, -4.0);
-      mainGroup.scale.set(0.5, 0.5, 0.5);
+      mainGroup.scale.set(0.7, 0.7, 0.7);
     }
   }
 
   updateGroupPosition();
 
   // 2. Floating Starfield / Particle Constellation Nodes in Gold & Navy
-  const particleCount = 160;
+  const particleCount = 120;
   const particleGeom = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = (Math.random() - 0.5) * 14;
-    positions[i + 1] = (Math.random() - 0.5) * 10;
-    positions[i + 2] = (Math.random() - 0.5) * 8;
+    positions[i] = (Math.random() - 0.5) * 10;
+    positions[i + 1] = (Math.random() - 0.5) * 8;
+    positions[i + 2] = (Math.random() - 0.5) * 6;
   }
 
   particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
