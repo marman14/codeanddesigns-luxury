@@ -727,6 +727,47 @@ button {
   pointer-events: auto !important;
 }
 
+/* ==========================================================================
+   SUBPAGE HERO CENTERING (Matching real AR Webcrafts layout)
+   ========================================================================== */
+.tp-subpage-hero-area {
+  text-align: center !important;
+}
+
+.tp-subpage-hero-area .container-1510,
+.tp-subpage-hero-area .container-1750,
+.tp-hero-subpage-center {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.tp-subpage-hero-area .tp-section-subtitle,
+.tp-hero-subpage-center .tp-section-subtitle {
+  margin: 0 auto 20px auto !important;
+  display: inline-flex !important;
+  text-align: center !important;
+  align-self: center !important;
+}
+
+.tp-subpage-hero-area .tp-hero-title,
+.tp-hero-subpage-center .tp-hero-title {
+  text-align: center !important;
+  margin: 0 auto 24px auto !important;
+  max-width: 960px !important;
+}
+
+.tp-subpage-hero-area p,
+.tp-hero-subpage-center p {
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 850px !important;
+}
+
 /* Video capsule pill inside headline */
 .tp-hero-video-pill {
   display: inline-flex;

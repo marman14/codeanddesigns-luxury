@@ -188,7 +188,14 @@ export function initScrollAnimations() {
       const heroButtons = hero.querySelector('.tp-hero-buttons, .tp-btn-gold')?.parentElement || hero.querySelector('.tp-btn-gold');
       const heroFounderCard = hero.querySelector('.ar-hero-floating-card, .tp-hero-more-info');
 
-      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const heroTl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        onComplete: () => {
+          if (heroBadge) heroBadge.classList.add('lux-live-active');
+          if (heroTitle) heroTitle.classList.add('lux-live-active');
+          if (heroDesc) heroDesc.classList.add('lux-live-active');
+        }
+      });
 
       if (heroBadge && !processedElements.has(heroBadge)) {
         markProcessed(heroBadge);
