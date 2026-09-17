@@ -608,47 +608,71 @@ button {
   }
 }
 
+/* ==================== 3. TEXT SEPARATION (LEFT COLUMN) ==================== */
 /* Column 1 (Left): Text, Headings, Subtext, Buttons */
 .ar-hero-col-left {
   position: relative !important;
-  z-index: 10 !important;
+  z-index: 20 !important;
   pointer-events: auto !important;
 }
 
-/* ==================== 3D CANVAS & FLOATING CARD ISOLATION FIX ==================== */
+.ar-hero-col-left .tp-hero-title-box,
+.ar-hero-col-left .tp-hero-title,
+.ar-hero-col-left p,
+.ar-hero-col-left .tp-btn-gold,
+.ar-hero-col-left .card-action-btn-white,
+.ar-hero-col-left div {
+  position: relative !important;
+  z-index: 20 !important;
+  pointer-events: auto !important;
+}
+
+/* ==================== 1 & 2. CANVAS ISOLATION CONTAINER & BLEED PREVENTION ==================== */
 /* Column 2 (Right): 3D WebGL Canvas Container & Consultant Card */
 .ar-hero-col-right,
 .ar-hero-visual {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 16px !important;
   position: relative !important;
-  z-index: 10 !important;
+  z-index: 5 !important;
   pointer-events: auto !important;
   width: 100% !important;
 }
 
-/* 3D canvas ko restrict karein taake woh neeche na phailay */
-.ar-hero-visual canvas, 
-.ar-hero-visual iframe,
-.ar-hero-visual div[class*="canvas"],
+/* 1. Strict Canvas Isolation Container */
 .ar-canvas-wrapper,
-#hero-webgl-canvas {
-  height: 280px !important;
-  max-height: 280px !important;
+.ar-hero-visual .ar-canvas-wrapper,
+.ar-hero-visual div[class*="canvas"] {
   width: 100% !important;
-  object-fit: contain !important;
+  max-width: 500px !important;
+  height: 450px !important;
   position: relative !important;
-  z-index: 2 !important;
+  overflow: hidden !important;
+  pointer-events: auto !important;
+  z-index: 5 !important;
   border-radius: var(--radius-md);
-  overflow: hidden;
   background: transparent;
-  display: block !important;
-  pointer-events: none;
+  margin: 0 auto;
 }
 
-/* Founder card ko hamesha 3D ke upar aur alag space mein rakhein */
+/* 2. Prevent Bleeding: Canvas element inside wrapper */
+#hero-webgl-canvas,
+.ar-hero-visual canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  z-index: 1 !important;
+}
+
+/* Founder card sits safely below canvas */
 .ar-hero-floating-card,
 .tp-hero-more-info {
   position: relative !important;
