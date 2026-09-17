@@ -238,6 +238,67 @@ button {
   padding-left: 28px;
 }
 
+/* Services Megamenu */
+.tp-megamenu {
+  position: absolute;
+  top: 100%;
+  left: -120px;
+  width: 680px;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 45px rgba(1, 27, 57, 0.12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  z-index: 1000;
+}
+
+.has-dropdown:hover .tp-megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tp-megamenu-item {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.tp-megamenu-item:hover {
+  background: #ffffff;
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(190, 140, 51, 0.15);
+}
+
+.tp-megamenu-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-navy);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tp-megamenu-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
 /* Header Right Area */
 .tp-header-right {
   display: flex;
@@ -1281,6 +1342,275 @@ button {
 .tp-testimonial-author span {
   font-size: 0.95rem;
   color: var(--text-muted);
+}
+
+/* 8 Testimonial Grid for Verbatim Master PDF Testimonials */
+.tp-testimonial-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 1300px) {
+  .tp-testimonial-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tp-testimonial-grid-8 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   FEATURED CASE STUDY SPOTLIGHT: WEBINARIGNITION (TOBIAS CONRAD)
+   ========================================================================== */
+.tp-featured-case-section {
+  padding: 120px 0;
+  background: var(--bg-navy);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-study-spotlight-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 50px;
+  align-items: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.case-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(190, 140, 51, 0.2);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.case-study-spotlight-card h3 {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.12;
+}
+
+.case-study-spotlight-card p {
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 30px;
+}
+
+.case-metrics-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 36px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.case-metric-item .val {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+.case-metric-item .lbl {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+}
+
+.case-img-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.case-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .case-study-spotlight-card {
+    grid-template-columns: 1fr;
+    padding: 36px 24px;
+  }
+}
+
+/* ==========================================================================
+   DISCOVERY CALL CALENDLY EMBED SECTION (#appointmant)
+   ========================================================================== */
+.tp-appointment-section {
+  padding: 120px 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-light);
+  position: relative;
+}
+
+.appointment-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(1, 27, 57, 0.08);
+  overflow: hidden;
+  padding: 30px 20px;
+}
+
+.calendly-inline-widget {
+  min-width: 320px;
+  height: 750px;
+  width: 100%;
+  border: none;
+}
+
+/* ==========================================================================
+   FLUENT FORMS INTEGRATION (#fluentform_7, #fluentform_2)
+   ========================================================================== */
+#fluentform_7,
+#fluentform_2 {
+  width: 100%;
+}
+
+.fluentform-newsletter-wrap {
+  display: flex;
+  gap: 12px;
+  max-width: 520px;
+  margin-top: 20px;
+}
+
+.fluentform-newsletter-input {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 14px 20px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.fluentform-newsletter-input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.fluentform-newsletter-btn {
+  background: var(--bg-btn-gold);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.fluentform-newsletter-btn:hover {
+  background: #ba8e42;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5-STEP ONBOARDING PROCESS TIMELINE
+   ========================================================================== */
+.tp-onboarding-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.tp-onboarding-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+  position: relative;
+}
+
+.tp-onboarding-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(1, 27, 57, 0.1);
+}
+
+.tp-onboarding-step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(190, 140, 51, 0.12);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.tp-onboarding-card h4 {
+  font-size: 1.35rem;
+  color: var(--text-navy);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.tp-onboarding-duration {
+  font-size: 0.95rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.tp-onboarding-card p {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+@media (max-width: 1200px) {
+  .tp-onboarding-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tp-onboarding-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================

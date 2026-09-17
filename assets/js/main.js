@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Interactive Contact Form with Validation & Feedback
-  const contactForms = document.querySelectorAll('.contact-ajax-form');
+  // 4. Interactive Contact Form with Validation & Feedback (#fluentform_7 & #fluentform_2)
+  const contactForms = document.querySelectorAll('.contact-ajax-form, #fluentform_7');
   contactForms.forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simulate network response
       setTimeout(() => {
         if (submitBtn) {
-          submitBtn.innerHTML = '✓ Message Sent Successfully!';
+          submitBtn.innerHTML = '✓ Project Details Received!';
           submitBtn.style.backgroundColor = 'var(--bg-btn-gold)';
           submitBtn.style.color = '#ffffff';
         }
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         responseBox.className = 'form-success-alert';
         responseBox.style.cssText = `
           margin-top: 18px;
-          padding: 16px 20px;
+          padding: 18px 24px;
           background: rgba(190, 140, 51, 0.12);
           border: 1px solid var(--accent-gold);
           border-radius: var(--radius-sm);
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
           font-weight: 500;
           text-align: center;
         `;
-        responseBox.textContent = 'Thank you! We received your message and will respond within 24 hours.';
+        responseBox.textContent = 'Thank you! Arman and the AR Webcrafts senior engineering team have received your brief and will respond within 24–48 hours.';
         form.appendChild(responseBox);
 
         form.reset();
@@ -124,17 +124,63 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.style.color = '';
           }
           if (responseBox) responseBox.remove();
-        }, 6000);
-      }, 1000);
+        }, 7000);
+      }, 900);
+    });
+  });
+
+  // Newsletter Form Handler (#fluentform_2)
+  const newsletterForms = document.querySelectorAll('#fluentform_2');
+  newsletterForms.forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'Subscribe';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Subscribing...';
+      }
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.innerHTML = '✓ Subscribed!';
+        }
+
+        const alertBox = document.createElement('div');
+        alertBox.style.cssText = `
+          margin-top: 12px;
+          font-size: 1rem;
+          color: var(--accent-gold);
+          font-weight: 500;
+        `;
+        alertBox.textContent = 'You are subscribed to AR Webcrafts engineering briefings.';
+        form.appendChild(alertBox);
+
+        form.reset();
+
+        setTimeout(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+          if (alertBox) alertBox.remove();
+        }, 5000);
+      }, 700);
     });
   });
 
   // 5. Highlight Current Active Page in Navigation
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.tp-nav-menu a, .tp-offcanvas-menu a');
+  const rawPath = window.location.pathname.replace(/^\/|\/$/g, '');
+  const currentPath = rawPath.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.tp-nav-menu a, .tp-offcanvas-menu a, .tp-megamenu a');
   navLinks.forEach((link) => {
-    const linkPath = link.getAttribute('href');
-    if (linkPath === currentPath || (currentPath === '' && linkPath === 'index.html')) {
+    const linkPath = (link.getAttribute('href') || '').replace(/^\/|\/$/g, '');
+    if (
+      linkPath === currentPath ||
+      (currentPath === 'index.html' && (linkPath === '' || linkPath === './')) ||
+      (currentPath && linkPath && linkPath.includes(currentPath))
+    ) {
       const parentLi = link.closest('li');
       if (parentLi) parentLi.classList.add('active');
     }
