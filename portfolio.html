@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Case Studies &amp; Portfolio — AR Webcrafts LLC</title>
   <meta name="description" content="Explore AR Webcrafts LLC case studies: WebinarIgnition commercial plugin management, LearnDash certification systems, enterprise ERP integrations, and WooCommerce checkouts." />
-  <link rel="canonical" href="https://arwebcraftsofficial.com/portfolio/" />
+  <link rel="canonical" href="https://arwebcrafts.com/portfolio/" />
   
   <link rel="stylesheet" href="assets/css/typography.css" />
   <link rel="stylesheet" href="assets/css/style.css?v=8.0" />
@@ -21,7 +21,9 @@
           <a href="./">
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="40" height="40" rx="8" fill="#be8c33"/>
-              <path d="M12 28L20 12L28 28" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+              <path d="M12 28L20 12L28 28" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 22H25" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="20" cy="12" r="2" fill="#ffffff"/>
             </svg>
             <span>AR Webcrafts</span>
           </a>
@@ -31,7 +33,7 @@
           <ul class="tp-nav-menu">
             <li><a href="./">Home</a></li>
             <li class="has-dropdown ar-dropdown-parent">
-              <a href="./services/">Services ▾</a>
+              <a href="./services/">Services <span style="font-size: 0.8em; margin-left: 2px;">▾</span></a>
               <div class="ar-megamenu tp-megamenu" style="display: none;">
                 <a href="./wordpress-plugin-development/" class="ar-megamenu-item tp-megamenu-item">
                   <div class="ar-megamenu-title tp-megamenu-title"><span>Custom WordPress Plugins</span><span>→</span></div>
@@ -83,16 +85,48 @@
     </div>
   </header>
 
+  <!-- ==================== OFFCANVAS DRAWER ==================== -->
+  <div class="tp-offcanvas-area">
+    <div class="tp-offcanvas-top">
+      <div class="tp-header-logo">
+        <a href="./">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#be8c33"/>
+            <path d="M12 28L20 12L28 28" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span>AR Webcrafts</span>
+        </a>
+      </div>
+      <button class="tp-offcanvas-close-btn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="tp-offcanvas-menu">
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="./services/">All Services</a></li>
+        <li><a href="./wordpress-plugin-development/">— WordPress Plugin Dev</a></li>
+        <li><a href="./woocommerce-custom-development/">— WooCommerce Customization</a></li>
+        <li><a href="./learndash-customization-services/">— LearnDash LMS Solutions</a></li>
+        <li><a href="./api-integrations-services/">— API Integrations &amp; Automation</a></li>
+        <li><a href="./maintenance/">— Maintenance Packages</a></li>
+        <li><a href="./hire-a-full-stack-wordpress-developer/">— Hire Full-Stack Developer</a></li>
+        <li><a href="./portfolio/">Case Studies / Portfolio</a></li>
+        <li><a href="./about-us/">About Us</a></li>
+        <li><a href="./contact-us/">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="body-overlay"></div>
+
   <!-- ==================== HERO ==================== -->
   <section class="tp-hero-area" style="min-height: 55vh; padding-top: 180px; padding-bottom: 60px;">
     <div class="container-1510">
-      <div class="tp-section-subtitle">Verified Client Results</div>
+      <div class="tp-section-subtitle">Verified Engineering Results</div>
       <h1 class="tp-hero-title" style="font-size: clamp(3.2rem, 7vw, 7.2rem); line-height: 1.05;">
         Featured Case Studies &amp; <br>
         <span class="accent-italic">Engineering Portfolio.</span>
       </h1>
       <p style="font-size: 1.4rem; color: var(--text-muted); max-width: 850px; margin-top: 24px;">
-        Measurable engineering outcomes delivered for growing businesses, commercial software vendors, and digital agencies worldwide.
+        Explore verified client case studies and commercial plugins built, optimized, and managed independently by AR Webcrafts LLC for businesses generating $250K–$5M.
       </p>
     </div>
   </section>
@@ -117,11 +151,13 @@
               <div class="lbl">Uptime &amp; Release Record</div>
             </div>
             <div class="case-metric-item">
-              <div class="val">Zero</div>
-              <div class="lbl">Disruptive Bugs</div>
+              <div class="val">Tier-1</div>
+              <div class="lbl">GoToWebinar Rival</div>
             </div>
           </div>
-          <a href="#appointmant" class="tp-btn-gold"><span>Discuss Similar Architecture</span><span class="tp-btn-circle">→</span></a>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px;">
+            <a href="#appointmant" class="tp-btn-gold"><span>Discuss Similar Architecture</span><span class="tp-btn-circle">→</span></a>
+          </div>
         </div>
         <div class="case-img-box">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&q=80" alt="WebinarIgnition Case Study" />
@@ -130,130 +166,287 @@
     </div>
   </section>
 
-  <!-- ==================== CASE STUDY GRID ==================== -->
+  <!-- ==================== ALL 6 LIVE CLIENT CASE STUDIES ==================== -->
   <section class="tp-service-area">
     <div class="container-1510">
       <div class="tp-service-header">
-        <div class="tp-section-subtitle">Verified Outcomes</div>
-        <h2 class="tp-section-title-large">Real Client Transformations Across Industries</h2>
+        <div class="tp-section-subtitle">Client Case Studies</div>
+        <h2 class="tp-section-title-large">Proven Architectural Deliverables</h2>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px;">
 
-        <!-- Case 1: Sarah M. -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Online Education Platform</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">52% ➔ 71%</span>
+        <!-- Case 1: WebinarIgnition -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Commercial Software Vendor</span>
+            <span style="font-size: 1.3rem; color: var(--accent-gold); font-weight: 700;">25+ Months</span>
           </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">Custom LearnDash Certification Engine</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “Our course completion rate jumped from 52% to 71% after AR Webcrafts built our custom student tracking system. LearnDash couldn't handle our certification logic—they built exactly what we needed in 10 weeks.”
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">WebinarIgnition Commercial Plugin</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Complete plugin development handover for Tobias Conrad. Managed all feature roadmaps, video streaming integrations, database optimizations, and monthly security releases.
           </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>WordPress Core</span>
+            <span>Video Streaming API</span>
+            <span>OOP Architecture</span>
+            <span>Custom DB Engine</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Client: Tobias Conrad • WebinarIgnition.com</div>
+        </div>
+
+        <!-- Case 2: Best-One Mobile Phones -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">E-Commerce Platform</span>
+            <a href="https://bestonemobilephones.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 600;">Visit Website ↗</a>
+          </div>
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">Best-One Mobile Phones</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Engineered a high-performance WooCommerce marketplace with custom AJAX multi-attribute device filtering, live inventory sync across retail locations, and streamlined single-page checkout.
+          </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>WooCommerce</span>
+            <span>Faceted Search</span>
+            <span>Fast Checkout</span>
+            <span>Inventory Sync</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Live: bestonemobilephones.com</div>
+        </div>
+
+        <!-- Case 3: AAA Food Handler -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Enterprise LMS Platform</span>
+            <a href="https://aaafoodhandler.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 600;">Visit Website ↗</a>
+          </div>
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">AAA Food Handler LMS</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Architected a corporate LMS training platform on LearnDash with corporate multi-seat seat purchasing, state compliance validation, custom PDF certificate generation, and automated reporting.
+          </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>LearnDash</span>
+            <span>Group B2B Accounts</span>
+            <span>PDF Certificates</span>
+            <span>Compliance Engine</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Live: aaafoodhandler.com</div>
+        </div>
+
+        <!-- Case 4: All Academic Helpers -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Academic Consulting Portal</span>
+            <a href="https://allacademichelpers.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 600;">Visit Website ↗</a>
+          </div>
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">All Academic Helpers</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Custom student portal featuring real-time client-to-expert messaging, encrypted document uploads, dynamic milestone-based payment processing, and comprehensive dispute workflows.
+          </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>Custom Portal</span>
+            <span>WebSocket Chat</span>
+            <span>Stripe Escrow</span>
+            <span>Document Security</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Live: allacademichelpers.com</div>
+        </div>
+
+        <!-- Case 5: Scrap Buyer UAE -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Industrial B2B Portal</span>
+            <a href="https://scrapbuyeruae.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 600;">Visit Website ↗</a>
+          </div>
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">Scrap Buyer UAE</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Built a lead-generation and industrial metal trading platform featuring WhatsApp instant quotation routing, geo-targeted service pages, and optimized local search schema.
+          </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>Lead Automation</span>
+            <span>WhatsApp API</span>
+            <span>Local SEO Schema</span>
+            <span>Speed Optimized</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Live: scrapbuyeruae.com</div>
+        </div>
+
+        <!-- Case 6: Scrap Buyers in Bahrain -->
+        <div class="tp-testimonial-card" style="padding: 40px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Bilingual B2B Platform</span>
+            <a href="https://scrapbuyersinbahrain.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 600;">Visit Website ↗</a>
+          </div>
+          <h3 style="font-size: 1.9rem; color: var(--text-navy); margin-bottom: 12px;">Scrap Buyers in Bahrain</h3>
+          <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-body); margin-bottom: 18px;">
+            Delivered a full bilingual (Arabic &amp; English) scrap asset management platform with instant dispatch requests, dynamic rate calculators, and responsive mobile consultation flows.
+          </p>
+          <div class="tp-service-tags" style="margin-bottom: 20px;">
+            <span>Bilingual RTL/LTR</span>
+            <span>Dynamic Rates</span>
+            <span>Mobile First</span>
+            <span>Custom Post Types</span>
+          </div>
+          <div style="font-weight: 600; color: var(--text-navy); font-size: 1.1rem;">Live: scrapbuyersinbahrain.com</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== COMMERCIAL PLUGINS & PRODUCTS SHOWCASE ==================== -->
+  <section class="tp-service-area" style="background-color: var(--bg-primary);">
+    <div class="container-1510">
+      <div class="tp-service-header">
+        <div class="tp-section-subtitle">Software Products</div>
+        <h2 class="tp-section-title-large">Commercial Plugins &amp; Add-ons by AR Webcrafts</h2>
+        <p style="font-size: 1.3rem; color: var(--text-muted); max-width: 800px; margin-top: 14px;">
+          Over 30+ commercial WordPress, WooCommerce, and LearnDash extensions engineered to enterprise standards and published globally.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+
+        <!-- Product 1 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">🎓</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">LearnDash Certificate Verify &amp; Share</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Generates unique, verifiable public URLs for student certificates with 1-click LinkedIn Add-to-Profile certification badges.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">LearnDash Add-on</span>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📊</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">LearnDash Quiz Reports Pro</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Advanced student assessment analytics, question-by-question breakdown, automated grading distribution, and exportable CSV reports.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">LearnDash Analytics</span>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📅</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">Course Planner Pro</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Interactive calendar dashboard for self-paced students to schedule study goals, deadlines, and automated calendar reminders.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">LMS Productivity</span>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">🔄</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">LearnDash Progress Reset Pro</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Granular single-click reset tool allowing admins and students to retake specific topics, quizzes, or whole courses cleanly.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">LMS Management</span>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">⚡</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">WooCommerce Bulk Edit Pro</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            High-speed tabular spreadsheet editor for updating prices, stock status, dimensions, and custom metadata for 10,000+ items.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">WooCommerce Pro</span>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="tp-testimonial-card" style="padding: 30px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📦</div>
+          <h3 style="font-size: 1.5rem; color: var(--text-navy); margin-bottom: 10px;">WooCommerce Min/Max Quantities</h3>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Enforces minimum, maximum, and stepped quantity constraints per product, variation, or entire shopping cart.
+          </p>
+          <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">B2B Wholesale</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ALL 8 CLIENT TESTIMONIALS ==================== -->
+  <section class="tp-testimonial-section">
+    <div class="container-1510">
+      <div class="tp-testimonial-header">
+        <div class="tp-section-subtitle">Client Endorsements</div>
+        <h2 class="tp-section-title-large">Trusted by Founders, Directors &amp; Agency Owners</h2>
+        <div class="tp-clutch-badge">
+          <span class="stars">★★★★★</span>
+          <span style="font-size: 1.1rem; color: var(--text-navy); font-weight: 600;">5.0 Verified Client Reviews</span>
+        </div>
+      </div>
+
+      <div class="tp-testimonial-grid-8">
+        <div class="tp-testimonial-card">
+          <p>“Our course completion rate jumped from 52% to 71% after AR Webcrafts built our custom student tracking system. LearnDash couldn't handle our certification logic—they built exactly what we needed in 10 weeks.”</p>
           <div class="tp-testimonial-author">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80" alt="Sarah M." />
-            <div>
-              <h4 style="font-size: 1.25rem;">Sarah M.</h4>
-              <span>Founder, Online Education Platform</span>
-            </div>
+            <div><h4>Sarah M.</h4><span>Founder, Online Education Platform</span></div>
           </div>
         </div>
 
-        <!-- Case 2: Michael R -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Manufacturing &amp; Logistics</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">40+ Hrs / Wk Saved</span>
-          </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">Bidirectional Enterprise ERP Integration</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “The ERP integration AR Webcrafts built eliminated 40+ hours per week of manual data entry. ROI in 6 months. Our operations team can finally focus on growth instead of spreadsheets.”
-          </p>
+        <div class="tp-testimonial-card">
+          <p>“The ERP integration AR Webcrafts built eliminated 40+ hours per week of manual data entry. ROI in 6 months. Our operations team can finally focus on growth instead of spreadsheets.”</p>
           <div class="tp-testimonial-author">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Michael R" />
-            <div>
-              <h4 style="font-size: 1.25rem;">Michael R</h4>
-              <span>Director of Operations, Manufacturing Company</span>
-            </div>
+            <div><h4>Michael R</h4><span>Director of Operations, Manufacturing Company</span></div>
           </div>
         </div>
 
-        <!-- Case 3: David Li -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">D2C E-Commerce Brand</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">Paid in Q1</span>
-          </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">WooCommerce Custom Subscription Funnel</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “I needed a custom WooCommerce checkout with subscription logic. They delivered in 8 weeks exactly as quoted. Great results, paid for itself in Q1. AR WebCrafts is now our go-to for updates.”
-          </p>
+        <div class="tp-testimonial-card">
+          <p>“I needed a custom WooCommerce checkout with subscription logic. They delivered in 8 weeks exactly as quoted. Great results, paid for itself in Q1. AR WebCrafts is now our go-to for updates.”</p>
           <div class="tp-testimonial-author">
             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="David Li" />
-            <div>
-              <h4 style="font-size: 1.25rem;">David Li</h4>
-              <span>Director, D2C Supplement Brand</span>
-            </div>
+            <div><h4>David Li</h4><span>Director, D2C Supplement Brand</span></div>
           </div>
         </div>
 
-        <!-- Case 4: Justin -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Agency Outsource Partner</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">Zero Friction</span>
-          </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">White-Label Agency WordPress Engineering</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “I run a web design agency and I outsource all the development and customization work to AR WebCrafts. When you're running client projects, you need a dev team you can hand something to and trust it'll come back right. Fast turnaround, no back-and-forth.”
-          </p>
+        <div class="tp-testimonial-card">
+          <p>“I wasn't sure how to even start building my site, but AR Webcrafts took over and built a fantastic WordPress site for me. They listened to my ideas and implemented them. Now I finally feel confident presenting my company online.”</p>
           <div class="tp-testimonial-author">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=120&auto=format&fit=crop&q=80" alt="Justin" />
-            <div>
-              <h4 style="font-size: 1.25rem;">Justin</h4>
-              <span>Owner, Web Wizard Agency &amp; webwizardagency.com</span>
-            </div>
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&auto=format&fit=crop&q=80" alt="Rana Ali" />
+            <div><h4>Rana Ali</h4><span>Owner, UK Phone house</span></div>
           </div>
         </div>
 
-        <!-- Case 5: Suzan -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Renewable Energy Agency</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">Pixel-Perfect</span>
+        <div class="tp-testimonial-card">
+          <p>“I’ve been working with Arman for the last year and I must say he’s an amazing hard working guy. Very friendly and professional. If you need any development work then he’s your guy. Thanks for all the great work!”</p>
+          <div class="tp-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&auto=format&fit=crop&q=80" alt="Georgios Cappon" />
+            <div><h4>Georgios Cappon</h4><span>Owner &amp; Creative Director at Pixoyo</span></div>
           </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">Custom WordPress Theme for Solar Energy</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “We needed a fully custom WordPress theme built for a solar energy client — something that didn't exist off the shelf and had to match a very specific design. AR WebCrafts handled the entire build. The theme came out exactly as we needed.”
-          </p>
+        </div>
+
+        <div class="tp-testimonial-card">
+          <p>“We needed a fully custom WordPress theme built for a solar energy client — something that didn't exist off the shelf and had to match a very specific design. AR WebCrafts handled the entire build. The theme came out exactly as we needed.”</p>
           <div class="tp-testimonial-author">
             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80" alt="Suzan" />
-            <div>
-              <h4 style="font-size: 1.25rem;">Suzan</h4>
-              <span>Agency Owner, Germany</span>
-            </div>
+            <div><h4>Suzan</h4><span>Agency Owner, Germany</span></div>
           </div>
         </div>
 
-        <!-- Case 6: Paul -->
-        <div class="tp-testimonial-card" style="padding: 44px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Financial &amp; Brokerage</span>
-            <span style="font-size: 1.6rem; color: var(--accent-gold); font-weight: 700;">High Conversion</span>
-          </div>
-          <h3 style="font-size: 1.85rem; color: var(--text-navy); margin-bottom: 16px;">Custom Mortgage Brokerage Platform</h3>
-          <p style="font-size: 1.25rem; line-height: 1.6; color: var(--text-body); font-style: italic; margin-bottom: 24px;">
-            “I needed a brokerage website that reflected how I actually work — not a generic template. AR WebCrafts built it from the ground up and understood what a mortgage broker's clients need to see before they pick up the phone.”
-          </p>
+        <div class="tp-testimonial-card">
+          <p>“I needed a brokerage website that reflected how I actually work — not a generic template. AR WebCrafts built it from the ground up and understood what a mortgage broker's clients need to see before they pick up the phone.”</p>
           <div class="tp-testimonial-author">
             <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&auto=format&fit=crop&q=80" alt="Paul" />
-            <div>
-              <h4 style="font-size: 1.25rem;">Paul</h4>
-              <span>Mortgage Broker, Owner</span>
-            </div>
+            <div><h4>Paul</h4><span>Mortgage Broker, Owner</span></div>
           </div>
         </div>
 
+        <div class="tp-testimonial-card">
+          <p>“I run a web design agency and I outsource all the development and customization work to AR WebCrafts. When you're running client projects, you need a dev team you can hand something to and trust it'll come back right. Fast turnaround, no back-and-forth.”</p>
+          <div class="tp-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=120&auto=format&fit=crop&q=80" alt="Justin" />
+            <div><h4>Justin</h4><span>Owner, Web Wizard Agency &amp; webwizardagency.com</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -263,9 +456,9 @@
     <div class="container-1510">
       <div style="text-align: center; margin-bottom: 40px;">
         <div class="tp-section-subtitle">Discovery Call</div>
-        <h2 class="tp-section-title-large">Discuss Your Project Scope with Arman</h2>
+        <h2 class="tp-section-title-large">Discuss Your Architecture with Arman</h2>
         <p style="font-size: 1.35rem; color: var(--text-muted); max-width: 750px; margin: 12px auto 0;">
-          Schedule your 30-minute discovery call to review technical specifications and get a proposal within 48 hours.
+          Schedule a 30-minute discovery call to review technical specifications and get a formal proposal within 48 hours.
         </p>
       </div>
 
@@ -298,8 +491,19 @@
             <span style="font-size: 2rem; font-weight: 600; color: #ffffff;">AR Webcrafts LLC</span>
           </div>
           <p style="font-size: 1.2rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); margin-bottom: 24px;">
-            Custom WordPress Plugin Development, WooCommerce Customization, LMS Solutions, and API Integrations for growing businesses ($250K–$5M revenue).
+            Bespoke WordPress Plugin Development, WooCommerce Customization, LMS Solutions, and API Integrations for growing businesses ($250K–$5M revenue).
           </p>
+
+          <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+            <a href="https://www.linkedin.com/company/arwebcrafts" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 500;">LinkedIn</a>
+            <span style="color: rgba(255,255,255,0.3);">•</span>
+            <a href="https://x.com/arwebcrafts" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 500;">X (Twitter)</a>
+            <span style="color: rgba(255,255,255,0.3);">•</span>
+            <a href="https://www.facebook.com/arwebcrafts" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 500;">Facebook</a>
+            <span style="color: rgba(255,255,255,0.3);">•</span>
+            <a href="https://www.instagram.com/arwebcrafts" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 500;">Instagram</a>
+          </div>
+
           <form id="fluentform_2" class="fluentform-newsletter-wrap">
             <input type="email" name="email" class="fluentform-newsletter-input" placeholder="Enter your business email" required />
             <button type="submit" class="fluentform-newsletter-btn">Subscribe</button>
@@ -323,11 +527,12 @@
           <ul class="tp-footer-links">
             <li><a href="tel:+13072784862">+1 307 278 4862</a></li>
             <li><a href="mailto:contact@arwebcrafts.com">contact@arwebcrafts.com</a></li>
-            <li><a href="https://arwebcraftsofficial.com/">arwebcraftsofficial.com</a></li>
-            <li><a href="./portfolio/">Case Studies / Portfolio</a></li>
+            <li><a href="https://arwebcrafts.com/">arwebcrafts.com</a></li>
+            <li><span style="color: rgba(255, 255, 255, 0.7);">1443 E 2nd St, Casper, WY 82601</span></li>
+            <li style="margin-top: 14px;"><a href="./portfolio/">Case Studies / Portfolio</a></li>
             <li><a href="./about-us/">About Us</a></li>
             <li><a href="./contact-us/">Contact Us</a></li>
-            <li style="margin-top: 14px;"><a href="./privacy-policy/">Privacy Policy</a></li>
+            <li><a href="./privacy-policy/">Privacy Policy</a></li>
             <li><a href="./imprint/">Imprint</a></li>
             <li><a href="./terms-and-conditions/">Terms and Conditions</a></li>
           </ul>
@@ -337,7 +542,7 @@
       <div class="tp-footer-watermark">AR Webcrafts</div>
 
       <div class="tp-footer-bottom">
-        <div>&copy; 2025 AR Webcrafts LLC. All rights reserved. US Registered LLC.</div>
+        <div>&copy; 2026 AR Webcrafts LLC. All rights reserved. US Registered Limited Liability Company.</div>
         <div class="tp-footer-bottom-links">
           <a href="./privacy-policy/">Privacy Policy</a>
           <a href="./imprint/">Imprint</a>
