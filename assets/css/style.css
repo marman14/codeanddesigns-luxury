@@ -937,17 +937,25 @@ button {
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border-subtle);
+  background: #011b39;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
 
 .tp-about-img-wrap img {
   width: 100%;
-  height: 480px;
-  object-fit: cover;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain !important;
+  object-position: center top !important;
+  border-radius: var(--radius-sm);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tp-about-img-wrap:hover img {
-  transform: scale(1.04);
+  transform: scale(1.025);
 }
 
 .tp-about-desc-box p {
@@ -2569,28 +2577,57 @@ img, video, iframe, canvas, svg {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
   .tp-header-area {
-    padding: 16px 0 !important;
+    padding: 14px 0 !important;
   }
   .tp-hero-area {
-    padding-top: 130px !important;
-    padding-bottom: 40px !important;
+    padding-top: 120px !important;
+    padding-bottom: 36px !important;
     min-height: auto !important;
   }
   .tp-hero-title {
-    font-size: clamp(2.4rem, 8vw, 3.6rem) !important;
+    font-size: clamp(2.2rem, 7.5vw, 3.4rem) !important;
     line-height: 1.18 !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 18px !important;
   }
   .tp-section-title-large {
-    font-size: clamp(2rem, 6.5vw, 2.8rem) !important;
+    font-size: clamp(1.8rem, 6vw, 2.6rem) !important;
     line-height: 1.25 !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 24px !important;
+  }
+  .ar-hero-grid,
+  .tp-about-grid,
+  .tp-contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  .ar-solo-badge-floating {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 16px auto 0 auto !important;
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+  .ar-solo-img-box {
+    max-height: 420px !important;
+    padding: 8px !important;
+  }
+  .case-study-spotlight-card {
+    padding: 28px 18px !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
   .call-back-inner {
     flex-direction: column !important;
     gap: 16px !important;
     text-align: center !important;
+    padding: 24px 18px !important;
   }
   .tp-footer-grid {
     grid-template-columns: 1fr !important;
@@ -2602,7 +2639,7 @@ img, video, iframe, canvas, svg {
     text-align: center !important;
   }
   .tp-service-item {
-    padding: 24px 16px !important;
+    padding: 24px 18px !important;
   }
   .tp-service-grid {
     grid-template-columns: 1fr !important;
@@ -2632,18 +2669,18 @@ img, video, iframe, canvas, svg {
     align-items: flex-start !important;
     gap: 16px !important;
   }
-  .contact-info-card, .contact-ajax-form {
-    padding: 24px 16px !important;
+  .contact-info-card, .contact-ajax-form, .tp-form-box {
+    padding: 24px 18px !important;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
   .tp-hero-title {
-    font-size: 2.2rem !important;
+    font-size: 2.1rem !important;
   }
   .tp-counters-wrap {
     grid-template-columns: 1fr !important;

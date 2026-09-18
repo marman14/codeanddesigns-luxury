@@ -3,9 +3,9 @@
    Integrates all modules, menu toggles, tabs, interactive forms
    ========================================================================== */
 
-import { initCustomCursor } from './cursor.js?v=13.0';
-import { initProjectHoverDisplacement } from './hover-displacement.js?v=13.0';
-import { initScrollAnimations } from './animations.js?v=13.0';
+import { initCustomCursor } from './cursor.js?v=14.0';
+import { initProjectHoverDisplacement } from './hover-displacement.js?v=14.0';
+import { initScrollAnimations } from './animations.js?v=14.0';
 
 function initApp() {
   // 1. Initialize Core Interactive Systems
