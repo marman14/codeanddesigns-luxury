@@ -1147,14 +1147,20 @@ button {
 
 /* Icon Box matching the white squircle in Reference Image 1 */
 .reference-card-icon {
-  width: 76px;
-  height: 76px;
-  background: #ffffff;
-  border-radius: 18px;
+  display: none !important;
+}
+
+.tp-service-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: rgba(190, 140, 51, 0.15);
+  border: 1.5px solid var(--accent-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .reference-card-icon .inner-square {
