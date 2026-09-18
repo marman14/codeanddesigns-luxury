@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -14,6 +12,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/index", "destination": "/index.html" },
     { "source": "/services", "destination": "/services.html" },
     { "source": "/services/", "destination": "/services.html" },
     { "source": "/wordpress-plugin-development", "destination": "/wordpress-plugin-development.html" },
