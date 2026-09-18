@@ -55,13 +55,13 @@ export function initScrollAnimations() {
       if (!el || processedElements.has(el)) return;
       markProcessed(el);
 
-      const yOffset = options.y !== undefined ? options.y : 30;
+      const yOffset = options.y !== undefined ? options.y : 22;
       const xOffset = options.x !== undefined ? options.x : 0;
-      const duration = options.duration || 0.8;
+      const duration = options.duration || 0.55;
       const delay = options.delay || 0;
       const ease = options.ease || 'power3.out';
       const rect = el.getBoundingClientRect();
-      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+      const isAboveFold = rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
 
       const fromVars = { opacity: 0, y: yOffset };
       if (xOffset) fromVars.x = xOffset;
@@ -86,7 +86,7 @@ export function initScrollAnimations() {
       } else {
         toVars.scrollTrigger = {
           trigger: el,
-          start: options.start || 'top 88%',
+          start: options.start || 'top 92%',
           once: true
         };
         gsap.fromTo(el, fromVars, toVars);
@@ -105,12 +105,12 @@ export function initScrollAnimations() {
 
       children.forEach((c) => markProcessed(c));
 
-      const yOffset = options.y !== undefined ? options.y : 35;
-      const duration = options.duration || 0.85;
-      const stagger = options.stagger !== undefined ? options.stagger : 0.1;
+      const yOffset = options.y !== undefined ? options.y : 24;
+      const duration = options.duration || 0.6;
+      const stagger = options.stagger !== undefined ? options.stagger : 0.07;
       const ease = options.ease || 'power3.out';
       const rect = gridEl.getBoundingClientRect();
-      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+      const isAboveFold = rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
 
       const fromVars = { opacity: 0, y: yOffset };
       if (options.scale) fromVars.scale = options.scale;
@@ -133,7 +133,7 @@ export function initScrollAnimations() {
       } else {
         toVars.scrollTrigger = {
           trigger: gridEl,
-          start: options.start || 'top 86%',
+          start: options.start || 'top 90%',
           once: true
         };
         gsap.fromTo(children, fromVars, toVars);
@@ -147,14 +147,14 @@ export function initScrollAnimations() {
       if (mediaEl.closest('.tp-header-logo, .tp-footer-watermark, .tp-offcanvas-area')) return;
       markProcessed(mediaEl);
 
-      const yOffset = options.y !== undefined ? options.y : 22;
-      const duration = options.duration || 0.85;
+      const yOffset = options.y !== undefined ? options.y : 18;
+      const duration = options.duration || 0.6;
       const delay = options.delay || 0;
       const ease = options.ease || 'power3.out';
       const rect = mediaEl.getBoundingClientRect();
-      const isAboveFold = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+      const isAboveFold = rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
 
-      const fromVars = { opacity: 0, y: yOffset, scale: 0.95 };
+      const fromVars = { opacity: 0, y: yOffset, scale: 0.97 };
       const toVars = {
         opacity: 1,
         y: 0,
@@ -170,7 +170,7 @@ export function initScrollAnimations() {
       } else {
         toVars.scrollTrigger = {
           trigger: mediaEl,
-          start: 'top 88%',
+          start: 'top 92%',
           once: true
         };
         gsap.fromTo(mediaEl, fromVars, toVars);
@@ -199,23 +199,23 @@ export function initScrollAnimations() {
 
       if (heroBadge && !processedElements.has(heroBadge)) {
         markProcessed(heroBadge);
-        heroTl.fromTo(heroBadge, { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }, 0.05);
+        heroTl.fromTo(heroBadge, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' }, 0.02);
       }
       if (heroTitle && !processedElements.has(heroTitle)) {
         markProcessed(heroTitle);
-        heroTl.fromTo(heroTitle, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', clearProps: 'all' }, 0.12);
+        heroTl.fromTo(heroTitle, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.65, ease: 'power4.out', clearProps: 'all' }, 0.08);
       }
       if (heroDesc && !processedElements.has(heroDesc)) {
         markProcessed(heroDesc);
-        heroTl.fromTo(heroDesc, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, clearProps: 'all' }, '-=0.5');
+        heroTl.fromTo(heroDesc, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, clearProps: 'all' }, '-=0.4');
       }
       if (heroButtons && !processedElements.has(heroButtons)) {
         markProcessed(heroButtons);
-        heroTl.fromTo(heroButtons, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.75, clearProps: 'all' }, '-=0.5');
+        heroTl.fromTo(heroButtons, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' }, '-=0.4');
       }
       if (heroFounderCard && !processedElements.has(heroFounderCard)) {
         markProcessed(heroFounderCard);
-        heroTl.fromTo(heroFounderCard, { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, clearProps: 'all' }, '-=0.6');
+        heroTl.fromTo(heroFounderCard, { opacity: 0, y: 22, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, clearProps: 'all' }, '-=0.45');
       }
     });
 
