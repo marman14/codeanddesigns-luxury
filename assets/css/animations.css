@@ -428,8 +428,6 @@ html {
 .ar-badge-icon,
 .tp-pillar-icon svg,
 .tp-btn-gold .tp-btn-circle,
-.reference-card-icon,
-.reference-card-icon .inner-square,
 .tp-faq-btn svg {
   animation: luxIconBreathe 3.8s ease-in-out infinite;
   display: inline-block;
